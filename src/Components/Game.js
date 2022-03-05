@@ -15,11 +15,16 @@ function Game() {
                 Accept: 'application/json',
             }
         })
-            .then(result => result.json())
-            .then(json => {
+            .then((response) => response.json())
+            .then((json) => {
                 setEvents(json);
-
+                setIsLoaded(true);
             })
+            .catch((error) => {
+                setError(error);
+                setIsLoaded(true);
+            })
+
     }, []);
 
 
@@ -34,12 +39,7 @@ function Game() {
         return <div>Loading...</div>;
     } else {
         return (
-            <>
-                <h3>New Event</h3>
-                <ul>
-
-                </ul>
-            </>
+            events.map((event) => <li>{event.description}</li>)
         );
     }
 }
