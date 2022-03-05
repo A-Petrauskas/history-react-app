@@ -4,14 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function Car(props) {
-  return <h2>I am a {props.color + props.custom} Car!</h2>;
-}
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Car color="red" custom="test" />
   </React.StrictMode>,
   document.getElementById('root')
 );
