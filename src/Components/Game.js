@@ -4,24 +4,22 @@ export default Game;
 
 function Game() {
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [events, setEvents] = useState(null);
-
 
     useEffect(() => {
         fetch("http://localhost:5000/history/events")
             .then(response => response.json())
             .then(events => {
                 setEvents(events);
-                setIsLoaded(true);
+                setIsLoading(false);
             })
             .catch(error => {
                 setError(error);
-                setIsLoaded(true);
+                setIsLoading(false);
             })
 
     }, []);
-
 
     useEffect(() => {
         console.log(events);
@@ -30,7 +28,7 @@ function Game() {
 
     if (error) {
         return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    } else if (isLoading) {
         return <div>Loading...</div>;
     } else {
         return (
