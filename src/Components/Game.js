@@ -9,18 +9,13 @@ function Game() {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/history/events", {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-            }
-        })
-            .then((response) => response.json())
-            .then((json) => {
-                setEvents(json);
+        fetch("http://localhost:5000/history/events")
+            .then(response => response.json())
+            .then(events => {
+                setEvents(events);
                 setIsLoaded(true);
             })
-            .catch((error) => {
+            .catch(error => {
                 setError(error);
                 setIsLoaded(true);
             })
@@ -39,7 +34,7 @@ function Game() {
         return <div>Loading...</div>;
     } else {
         return (
-            events.map((event) => <li>{event.description}</li>)
+            events.map(event => <li key={event.id}>{event.description}</li>)
         );
     }
 }
