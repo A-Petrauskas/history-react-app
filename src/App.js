@@ -1,12 +1,12 @@
 import './App.css';
-import Game from './Components/Game.js'
+import { Routes, Route } from "react-router-dom";
+import LevelSelection from './pages/LevelSelection';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <Game />
-    </div>
+    <Routes>
+      <Route path="/" element={<LevelSelection />} />
+    </Routes>
   );
 }
 
