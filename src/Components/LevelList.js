@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Level from './Level'
+import LevelCard from './LevelCard'
 
 export default LevelList;
 
@@ -33,7 +33,7 @@ function LevelList() {
                 <div style={wrapper}>
                     {levels.map((level, i) => (
                         <div key={'level-' + i}>
-                            <Level {...level} />
+                            <LevelCard {...level} />
                         </div>
                     ))}
                 </div>
