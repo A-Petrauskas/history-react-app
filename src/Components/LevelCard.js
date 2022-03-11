@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default LevelCard;
 //CHANGE INTO CONTEXT!!!!!!!!!!!!!!
-function LevelCard({ name, mistakes, timeConstraint, description, eventCount, imageSrc }) {
+function LevelCard({ name, mistakes, timeConstraint, description, eventCount, imageSrc, id }) {
     return (
 
         <div>
@@ -21,7 +21,7 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
                     <ListGroupItem>Time constraint: {timeConstraint}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to="/level">
+                    <Link to={`/level/${id}/play`}>
                         <Button variant="primary">PLAY</Button>{''}
                     </Link>
                 </Card.Body>
