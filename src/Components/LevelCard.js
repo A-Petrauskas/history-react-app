@@ -1,4 +1,5 @@
 import { Card, ListGroupItem, ListGroup, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export default LevelCard;
 //CHANGE INTO CONTEXT!!!!!!!!!!!!!!
@@ -20,7 +21,9 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
                     <ListGroupItem>Time constraint: {timeConstraint}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Button variant="primary">PLAY</Button>{''}
+                    <Link to="/level">
+                        <Button variant="primary">PLAY</Button>{''}
+                    </Link>
                 </Card.Body>
             </Card>
         </div>
