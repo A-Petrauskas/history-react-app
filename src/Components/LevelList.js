@@ -6,13 +6,13 @@ export default LevelList;
 function LevelList() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [levels, setEvents] = useState(null);
+    const [levels, setLevels] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:5000/history/levels")
             .then(response => response.json())
-            .then(events => {
-                setEvents(events);
+            .then(levels => {
+                setLevels(levels);
                 setIsLoading(false);
             })
             .catch(error => {
