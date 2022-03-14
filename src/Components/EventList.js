@@ -22,5 +22,5 @@ const wrapper = {
     flexWrap: "wrap",
     padding: "10px",
     justifyContent: "center",
-    paddingTop: "100px"
+    paddingTop: "400px"
 }
