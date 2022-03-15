@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import EventList from "../Components/EventList"
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 import EventCard from "../Components/EventCard";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 
 export default LevelPlay;
@@ -42,12 +43,21 @@ function LevelPlay() {
     console.log(placedEvents);
     console.log(event);
 
+    let onDragEnd = result => {
+    }
+
     return (//FIX DATABASE
-        <div style={textStyle}>
-            <div>
-                <div style={newEventStyle}>
-                    <EventCard {...event} />
-                </div>
+        <DragDropContext onDragEnd={onDragEnd}>
+            <div style={textStyle}>
+                <Droppable droppableId="newEvent">
+                    {(provided) => (
+                        <div ref={provided.innerRef} {...provided.droppableProps}
+                            style={newEventStyle}>
+                            <EventCard {...event} id={'Card-'} index={42069} />
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
                 {placedEvents.length > 0 &&
                     <EventList placedEvents={placedEvents} />
                 }
@@ -55,7 +65,7 @@ function LevelPlay() {
                     New Event!
                 </Button>{''}
             </div>
-        </div>
+        </DragDropContext>
     )
 }
 

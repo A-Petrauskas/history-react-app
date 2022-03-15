@@ -1,19 +1,25 @@
 import React from "react";
 import EventCard from './EventCard'
+import { Droppable } from "react-beautiful-dnd";
 
 export default EventList;
 
 function EventList({ placedEvents }) {
     return (
-        <>
-            <div style={wrapper}>
-                {placedEvents.map((event, i) => (
-                    <div key={'event-' + i}>
-                        <EventCard {...event} />
-                    </div>
-                ))}
-            </div>
-        </>
+        <Droppable droppableId="placedEvents" direction="horizontal">
+            {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}
+                    style={wrapper}>
+                    {placedEvents.map((event, i) => (
+                        <div key={'event-' + i}>
+                            <EventCard {...event} index={i} id={'Card-' + i} />
+                        </div>
+                    ))}
+
+                    {provided.placeholder}
+                </div>
+            )}
+        </Droppable>
     );
 }
 
@@ -22,5 +28,5 @@ const wrapper = {
     flexWrap: "wrap",
     padding: "10px",
     justifyContent: "center",
-    paddingTop: "400px"
+    paddingTop: "200px"
 }
