@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import EventList from "../Components/EventList"
-import { Button } from "react-bootstrap";
 import EventCard from "../Components/EventCard";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
@@ -10,6 +9,7 @@ export default LevelPlay;
 
 function LevelPlay() {
     const levelId = useParams();
+    const firstEvent = useRef(true);
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
@@ -33,27 +33,42 @@ function LevelPlay() {
             fetch(`http://localhost:5000/history/game/${gameId}/event`)
                 .then(response => response.json())
                 .then(data => {
+                    if (firstEvent.current) {
+                        setPlacedEvents([data]);
+                        firstEvent.current = false;
+                    }
+
                     setEvent(data);
                 })
         }
 
     }, [placedEvents, gameId]);
 
-    console.log(gameId);
-    console.log(placedEvents);
-    console.log(event);
 
     let onDragEnd = result => {
+        const { destination, source } = result;
+
+        if (!destination) {
+            return;
+        }
+
+        if (destination.droppableId === source.droppableId && destination.index === source.index) {
+            return;
+        }
+
+        const finish = placedEvents.slice();
+        finish.splice(destination.index, 0, event);
+        setPlacedEvents(finish);
     }
 
     return (//FIX DATABASE
         <DragDropContext onDragEnd={onDragEnd}>
             <div style={textStyle}>
-                <Droppable droppableId="newEvent">
+                <Droppable droppableId="newEvent" isDropDisabled={true}>
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}
                             style={newEventStyle}>
-                            <EventCard {...event} id={'Card-'} index={42069} />
+                            <EventCard {...event} id={'newCard'} index={0} dragDisabled={false} />
                             {provided.placeholder}
                         </div>
                     )}
@@ -61,9 +76,6 @@ function LevelPlay() {
                 {placedEvents.length > 0 &&
                     <EventList placedEvents={placedEvents} />
                 }
-                <Button variant="danger" onClick={() => setPlacedEvents(prevArray => [...prevArray, event])}>
-                    New Event!
-                </Button>{''}
             </div>
         </DragDropContext>
     )

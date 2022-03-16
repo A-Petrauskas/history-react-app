@@ -12,7 +12,7 @@ function EventList({ placedEvents }) {
                     style={wrapper}>
                     {placedEvents.map((event, i) => (
                         <div key={'event-' + i}>
-                            <EventCard {...event} index={i} id={'Card-' + i} />
+                            <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} />
                         </div>
                     ))}
 
@@ -30,3 +30,13 @@ const wrapper = {
     justifyContent: "center",
     paddingTop: "200px"
 }
+
+// Add styling to the droppable!!
+
+// const PlacedEventsStyle = {
+//     padding: "8px",
+//     transition: "backround-color 0.5s ease",
+//     backgroundColor: props => (props.isDraggingOver ? 'skyblue' : 'white'),
+//     flexGrow: "1",
+//     minHeight: "200px"
+// }
