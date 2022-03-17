@@ -34,5 +34,8 @@ const imageStyle = {
 }
 
 const cardSeparation = {
-    padding: "8px"
+    padding: "8px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
 }

@@ -91,11 +91,12 @@ const textStyle = {
 const newEventStyle = {
     display: "flex",
     flexWrap: "wrap",
-    padding: "100px",
-    justifyContent: "center",
-    paddingTop: "100px",
+    justifyContent: "center"
 }
 
 const placedEventsStyle = {
     marginTop: "50px",
+    position: "fixed",
+    width: "100%",
+    top: "500px"
 }
