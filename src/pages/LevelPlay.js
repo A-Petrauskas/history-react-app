@@ -61,10 +61,10 @@ function LevelPlay() {
         setPlacedEvents(finish);
     }
 
-    return (//FIX DATABASE
+    return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div style={textStyle}>
-                <Droppable droppableId="newEvent" isDropDisabled={true}>
+                <Droppable droppableId="newEvent" isDropDisabled={true} direction="horizontal">
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.droppableProps}
                             style={newEventStyle}>
@@ -73,22 +73,29 @@ function LevelPlay() {
                         </div>
                     )}
                 </Droppable>
-                {placedEvents.length > 0 &&
-                    <EventList placedEvents={placedEvents} />
-                }
+                <div style={placedEventsStyle}>
+                    {placedEvents.length > 0 &&
+                        <EventList placedEvents={placedEvents} />
+                    }
+                </div>
             </div>
         </DragDropContext>
     )
 }
 
 const textStyle = {
-    textAlign: "center"
+    textAlign: "center",
+    position: "relative"
 }
 
 const newEventStyle = {
     display: "flex",
     flexWrap: "wrap",
-    padding: "10px",
+    padding: "100px",
     justifyContent: "center",
-    paddingTop: "100px"
+    paddingTop: "100px",
+}
+
+const placedEventsStyle = {
+    marginTop: "50px",
 }

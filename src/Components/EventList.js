@@ -25,10 +25,9 @@ function EventList({ placedEvents }) {
 
 const wrapper = {
     display: "flex",
-    flexWrap: "wrap",
-    padding: "10px",
+    padding: "50px",
     justifyContent: "center",
-    paddingTop: "200px"
+    backgroundColor: "#CBD4C2"
 }
 
 // Add styling to the droppable!!
