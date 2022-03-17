@@ -13,6 +13,7 @@ function LevelPlay() {
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
+    const placementIndex = useRef(-1);
 
     //CHANGE INTO SINGLE POST METHOD AND CHECK BY USER COOKIE
     useEffect(() => {
@@ -30,7 +31,13 @@ function LevelPlay() {
 
     useEffect(() => {
         if (gameId !== "") {
-            fetch(`http://localhost:5000/history/game/${gameId}/event`)
+            fetch(`http://localhost:5000/history/game/${gameId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ placementIndex: placementIndex.current })
+            })
                 .then(response => response.json())
                 .then(data => {
                     if (firstEvent.current) {
@@ -38,6 +45,7 @@ function LevelPlay() {
                         firstEvent.current = false;
                     }
 
+                    //IF GAMEOVER => RETURN
                     setEvent(data);
                 })
         }
@@ -55,6 +63,8 @@ function LevelPlay() {
         if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }
+
+        placementIndex.current = destination.index;
 
         const finish = placedEvents.slice();
         finish.splice(destination.index, 0, event);
