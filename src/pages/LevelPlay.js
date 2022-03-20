@@ -9,11 +9,15 @@ export default LevelPlay;
 
 function LevelPlay() {
     const levelId = useParams();
-    const firstEvent = useRef(true);
+    const baseEvent = useRef(true);
+    const placementIndex = useRef(-1);
+    const mistakes = useRef(0);
+    const mistakeMade = useRef(false);
+    const [firstEvent, setFirstEvent] = useState(false);
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
-    const placementIndex = useRef(-1);
+
 
     //CHANGE INTO SINGLE POST METHOD AND CHECK BY USER COOKIE
     useEffect(() => {
@@ -29,28 +33,39 @@ function LevelPlay() {
     }, [levelId]);
 
 
+    function fetchNextEvent() {
+        return fetch(`http://localhost:5000/history/game/${gameId}`, { //<==============
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ placementIndex: placementIndex.current })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (baseEvent.current) {
+                    setPlacedEvents([data]);
+                    baseEvent.current = false;
+                    setFirstEvent(true);
+                    return;
+                }
+
+                if (data.mistakes !== mistakes.current) {
+                    mistakeMade.current = true;
+                    mistakes.current = data.mistakes;
+                }
+
+                //IF GAMEOVER => RETURN
+                setEvent(data);
+            })
+    }
+
     useEffect(() => {
         if (gameId !== "") {
-            fetch(`http://localhost:5000/history/game/${gameId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ placementIndex: placementIndex.current })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (firstEvent.current) {
-                        setPlacedEvents([data]);
-                        firstEvent.current = false;
-                    }
-
-                    //IF GAMEOVER => RETURN
-                    setEvent(data);
-                })
+            fetchNextEvent();
         }
 
-    }, [placedEvents, gameId]);
+    }, [gameId, firstEvent]);
 
 
     let onDragEnd = result => {
@@ -66,9 +81,17 @@ function LevelPlay() {
 
         placementIndex.current = destination.index;
 
-        const finish = placedEvents.slice();
-        finish.splice(destination.index, 0, event);
-        setPlacedEvents(finish);
+        fetchNextEvent().then(() => {
+            if (mistakeMade.current) {
+                mistakeMade.current = false;
+            }
+            else {
+                const finish = placedEvents.slice();
+                finish.splice(destination.index, 0, event);
+                setPlacedEvents(finish);
+            }
+        });
+
     }
 
     return (
