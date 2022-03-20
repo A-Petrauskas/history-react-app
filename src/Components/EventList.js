@@ -27,7 +27,8 @@ const wrapper = {
     display: "flex",
     padding: "50px",
     justifyContent: "center",
-    backgroundColor: "#CBD4C2"
+    backgroundColor: "#CBD4C2",
+    overflowX: "auto"
 }
 
 const nonSelectable = {
