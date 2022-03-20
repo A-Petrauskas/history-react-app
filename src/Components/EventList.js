@@ -11,7 +11,7 @@ function EventList({ placedEvents }) {
                 <div ref={provided.innerRef} {...provided.droppableProps}
                     style={wrapper}>
                     {placedEvents.map((event, i) => (
-                        <div key={'event-' + i}>
+                        <div key={'event-' + i} style={nonSelectable}>
                             <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} />
                         </div>
                     ))}
@@ -30,12 +30,8 @@ const wrapper = {
     backgroundColor: "#CBD4C2"
 }
 
-// Add styling to the droppable!!
-
-// const PlacedEventsStyle = {
-//     padding: "8px",
-//     transition: "backround-color 0.5s ease",
-//     backgroundColor: props => (props.isDraggingOver ? 'skyblue' : 'white'),
-//     flexGrow: "1",
-//     minHeight: "200px"
-// }
+const nonSelectable = {
+    MozUserSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none"
+}

@@ -64,7 +64,7 @@ function LevelPlay() {
         if (gameId !== "") {
             fetchNextEvent();
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [gameId, firstEvent]);
 
 

@@ -30,7 +30,8 @@ function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
 const imageStyle = {
     width: "200px",
     height: "200px",
-    objectFit: "cover"
+    objectFit: "cover",
+    pointerEvents: "none"
 }
 
 const cardSeparation = {
@@ -38,4 +39,7 @@ const cardSeparation = {
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
+    MozUserSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none"
 }
