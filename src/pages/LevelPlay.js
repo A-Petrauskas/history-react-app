@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import EventList from "../Components/EventList"
 import EventCard from "../Components/EventCard";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import GameOverWindow from "../Components/GameOverWindow";
 
 
 export default LevelPlay;
@@ -13,10 +14,14 @@ function LevelPlay() {
     const placementIndex = useRef(-1);
     const mistakes = useRef(0);
     const mistakeMade = useRef(false);
+    const gameOver = useRef(false);
+    const gameStatus = useRef(0);
+    const score = useRef(0);
     const [firstEvent, setFirstEvent] = useState(false);
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
+    //track highscore
 
 
     //CHANGE INTO SINGLE POST METHOD AND CHECK BY USER COOKIE
@@ -34,7 +39,7 @@ function LevelPlay() {
 
 
     function fetchNextEvent() {
-        return fetch(`http://localhost:5000/history/game/${gameId}`, { //<==============
+        return fetch(`http://localhost:5000/history/game/${gameId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +60,11 @@ function LevelPlay() {
                     mistakes.current = data.mistakes;
                 }
 
-                //IF GAMEOVER => RETURN
+                if (data.gameStatus !== 0) {
+                    gameOver.current = true;
+                    gameStatus.current = data.gameStatus;
+                }
+
                 setEvent(data);
             })
     }
@@ -86,6 +95,7 @@ function LevelPlay() {
                 mistakeMade.current = false;
             }
             else {
+                score.current++;
                 const finish = placedEvents.slice();
                 finish.splice(destination.index, 0, event);
                 setPlacedEvents(finish);
@@ -95,24 +105,34 @@ function LevelPlay() {
     }
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div style={textStyle}>
-                <Droppable droppableId="newEvent" isDropDisabled={true} direction="horizontal">
-                    {(provided) => (
-                        <div ref={provided.innerRef} {...provided.droppableProps}
-                            style={newEventStyle}>
-                            <EventCard {...event} id={'newCard'} index={0} dragDisabled={false} />
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-                <div style={placedEventsStyle}>
-                    {placedEvents.length > 0 &&
-                        <EventList placedEvents={placedEvents} />
-                    }
+        <div>
+
+            {gameOver.current &&
+                <GameOverWindow gameId={gameId} gameStatus={gameStatus.current} score={score.current} levelId={levelId.id} />
+            }
+
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div style={textStyle}>
+                    <Droppable droppableId="newEvent" isDropDisabled={true} direction="horizontal">
+                        {(provided) => (
+                            <div ref={provided.innerRef} {...provided.droppableProps}
+                                style={newEventStyle}>
+                                {!gameOver.current &&
+                                    <EventCard {...event} id={'newCard'} index={0} dragDisabled={false} />
+                                }
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+
+                    <div style={placedEventsStyle}>
+                        {placedEvents.length > 0 &&
+                            <EventList placedEvents={placedEvents} />
+                        }
+                    </div>
                 </div>
-            </div>
-        </DragDropContext>
+            </DragDropContext>
+        </div>
     )
 }
 
