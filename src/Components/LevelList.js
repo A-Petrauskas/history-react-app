@@ -32,7 +32,7 @@ function LevelList() {
             <>
                 <div style={wrapper}>
                     {levels.map((level, i) => (
-                        <div key={'level-' + i}>
+                        <div key={'level-' + i} style={{ padding: "8px" }}>
                             <LevelCard {...level} />
                         </div>
                     ))}
