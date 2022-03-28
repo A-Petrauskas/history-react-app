@@ -25,6 +25,5 @@ const wrapper = {
     padding: "50px",
     backgroundColor: "#CBD4C2",
     overflowX: "auto",
-    display: "flex",
-    gap: "20px"
+    display: "flex"
 }

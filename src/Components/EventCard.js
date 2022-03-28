@@ -6,11 +6,12 @@ export default EventCard;
 function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
     return (
         //ADD BOTH NAME AND DESCRIPTION
-        <div style={cardSeparation}>
+        <div >
             <Draggable draggableId={id} index={index}>
                 {(provided) => (
 
-                    <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
+                    <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
+                        style={getEventStyle(provided.draggableProps.style)}>
                         <Card.Img variant="top" src={imageSrc} style={imageStyle} />
                         <Card.Body>
                             <Card.Title>{description}</Card.Title>
@@ -34,8 +35,10 @@ const imageStyle = {
     pointerEvents: "none"
 }
 
-const cardSeparation = {
-    MozUserSelect: "none",
-    WebkitUserSelect: "none",
-    msUserSelect: "none"
-}
+const getEventStyle = (draggableStyle) => ({
+    userSelect: "none",
+    margin: `0 20px 0 0`,
+
+
+    ...draggableStyle
+});
