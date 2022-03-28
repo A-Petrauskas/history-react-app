@@ -7,7 +7,7 @@ function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
     return (
         //ADD BOTH NAME AND DESCRIPTION
         <div style={cardSeparation}>
-            <Draggable draggableId={id} index={index} isDragDisabled={dragDisabled}>
+            <Draggable draggableId={id} index={index}>
                 {(provided) => (
 
                     <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
@@ -35,10 +35,6 @@ const imageStyle = {
 }
 
 const cardSeparation = {
-    padding: "8px",
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
     MozUserSelect: "none",
     WebkitUserSelect: "none",
     msUserSelect: "none"

@@ -11,9 +11,7 @@ function EventList({ placedEvents }) {
                 <div ref={provided.innerRef} {...provided.droppableProps}
                     style={wrapper}>
                     {placedEvents.map((event, i) => (
-                        <div key={'event-' + i} style={nonSelectable}>
-                            <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} />
-                        </div>
+                        <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} />
                     ))}
 
                     {provided.placeholder}
@@ -24,15 +22,9 @@ function EventList({ placedEvents }) {
 }
 
 const wrapper = {
-    display: "flex",
     padding: "50px",
-    justifyContent: "center",
     backgroundColor: "#CBD4C2",
-    overflowX: "auto"
-}
-
-const nonSelectable = {
-    MozUserSelect: "none",
-    WebkitUserSelect: "none",
-    msUserSelect: "none"
+    overflowX: "auto",
+    display: "flex",
+    gap: "20px"
 }

@@ -142,9 +142,11 @@ const textStyle = {
 }
 
 const newEventStyle = {
+    padding: "50px",
+    backgroundColor: "#CBD4C2",
+    overflowX: "auto",
     display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center"
+    gap: "20px"
 }
 
 const placedEventsStyle = {
