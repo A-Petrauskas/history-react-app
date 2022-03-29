@@ -4,6 +4,8 @@ import EventList from "../Components/EventList"
 import EventCard from "../Components/EventCard";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import GameOverWindow from "../Components/GameOverWindow";
+import LivesAndTime from '../Components/LivesAndTime';
+import ScoreInfo from '../Components/ScoreInfo';
 
 
 export default LevelPlay;
@@ -17,6 +19,8 @@ function LevelPlay() {
     const gameOver = useRef(false);
     const gameStatus = useRef(0);
     const score = useRef(0);
+    const timeConstraint = useRef(-1);
+    const mistakesAllowed = useRef(-1);
     const [firstEvent, setFirstEvent] = useState(false);
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
@@ -34,7 +38,11 @@ function LevelPlay() {
             body: JSON.stringify({ levelId: levelId.id })
         })
             .then(response => response.json())
-            .then(data => setGameId(data));
+            .then(data => {
+                setGameId(data.gameId);
+                timeConstraint.current = data.timeConstraint;
+                mistakesAllowed.current = data.mistakesAllowed; //JUST ADDED THIS
+            });
     }, [levelId]);
 
 
@@ -106,10 +114,13 @@ function LevelPlay() {
 
     return (
         <div>
-
             {gameOver.current &&
                 <GameOverWindow gameId={gameId} gameStatus={gameStatus.current} score={score.current} levelId={levelId.id} />
             }
+
+            <LivesAndTime />
+
+            <ScoreInfo currentScore={score.current} />
 
             <DragDropContext onDragEnd={onDragEnd}>
                 <div style={textStyle}>
@@ -142,10 +153,8 @@ const textStyle = {
 }
 
 const newEventStyle = {
-    padding: "50px",
-    backgroundColor: "#CBD4C2",
-    overflowX: "auto",
-    display: "flex"
+    display: "flex",
+    justifyContent: "center"
 }
 
 const placedEventsStyle = {

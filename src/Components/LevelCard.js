@@ -2,7 +2,7 @@ import { Card, ListGroupItem, ListGroup, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 export default LevelCard;
-//CHANGE INTO CONTEXT!!!!!!!!!!!!!!
+
 function LevelCard({ name, mistakes, timeConstraint, description, eventCount, imageSrc, id }) {
     return (
 
