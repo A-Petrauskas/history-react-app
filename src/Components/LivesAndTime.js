@@ -4,11 +4,16 @@ export default LivesAndTime
 
 function LivesAndTime({ mistakesAllowed, mistakes, time }) {
     const lives = useRef("");
+    const heartsInitialised = useRef(true);
 
     function getLives() {
-        if (mistakes === 0) {
+        if (mistakes === 0 && heartsInitialised.current) {
+            heartsInitialised.current = false;
             lives.current = "❤".repeat(mistakesAllowed);
             return lives.current;
+        }
+        else if (mistakes === 0) {
+            return lives.current = "❤";
         }
 
         let newLives = setCharAt(lives.current, mistakes - 1, "✖");
