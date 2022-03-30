@@ -37,6 +37,5 @@ function LivesAndTime({ mistakesAllowed, mistakes }) {
 
 const livesStyle = {
     fontSize: "50px",
-    display: "flex",
-    justifyContent: "center"
+    textAlign: "center"
 }

@@ -38,6 +38,6 @@ const cardSeparation = {
 
 const cardStyle = {
     flexDirection: "row",
-    background: "grey",
+    background: "#EEE2DC",
     fontWeight: "bold"
 }

@@ -77,12 +77,12 @@ const boxStyle = {
     flexWrap: "wrap",
     position: "absolute",
     top: "20%",
-    left: "33%",
+    left: "30%",
     margin: "-25px 0 0 -25px",
     textAlign: "center",
     color: "black",
     fontSize: "large",
-    background: "rgba(203, 212, 194, 1)",
+    background: "#EDC7B7",
 }
 
 const borderLine = {

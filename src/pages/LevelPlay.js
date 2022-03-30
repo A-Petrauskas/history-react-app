@@ -22,6 +22,8 @@ function LevelPlay() {
     const score = useRef(0);
     const timeConstraint = useRef(-1);
     const mistakesAllowed = useRef(-1);
+    const timeOutSent = useRef(false);
+    const [timeIsUp, SetTimeIsUp] = useState(false);
     const [firstEvent, setFirstEvent] = useState(false);
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
@@ -86,6 +88,12 @@ function LevelPlay() {
     }, [gameId, firstEvent]);
 
 
+    if (timeIsUp && !timeOutSent.current) {
+        timeOutSent.current = true;
+        fetchNextEvent();
+    }
+
+
     let onDragEnd = result => {
         const { destination, source } = result;
 
@@ -122,12 +130,14 @@ function LevelPlay() {
             <ScoreInfo currentScore={score.current} />
 
             <div style={livesAndTimeStyle}>
-                <LivesAndTime mistakesAllowed={mistakesAllowed.current}
-                    mistakes={mistakes.current}
-                />
+                {!gameOver.current &&
+                    <LivesAndTime mistakesAllowed={mistakesAllowed.current}
+                        mistakes={mistakes.current}
+                    />
+                }
 
                 {timeConstraint.current !== -1 &&
-                    <TimeInfo time={timeConstraint.current} />
+                    <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} />
                 }
             </div>
 
@@ -171,7 +181,7 @@ const placedEventsStyle = {
     marginTop: "50px",
     position: "fixed",
     width: "100%",
-    top: "500px"
+    top: "50%"
 }
 
 const livesAndTimeStyle = {
@@ -179,4 +189,5 @@ const livesAndTimeStyle = {
     position: "absolute",
     top: "10%",
     right: "10%",
+    minWidth: "120px"
 }

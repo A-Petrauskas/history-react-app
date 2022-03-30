@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 
 export default TimeInfo
 
-function TimeInfo({ time }) {
+function TimeInfo({ time, passTimeIsUp }) {
     const timeSet = useRef(true);
     const [seconds, setSeconds] = useState(time);
     const [minutes, setMinutes] = useState(time);
@@ -36,6 +36,10 @@ function TimeInfo({ time }) {
         };
     });
 
+    if (seconds === 0 && minutes === 0) {
+        passTimeIsUp(true);
+    }
+
     return (
         <div style={timeStyle}>
             {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
@@ -48,6 +52,5 @@ const timeStyle = {
     fontSize: "50px",
     fontFamily: "Oswald, sans-serif",
     marginTop: "30px",
-    display: "flex",
-    justifyContent: "center"
+    textAlign: "center"
 }
