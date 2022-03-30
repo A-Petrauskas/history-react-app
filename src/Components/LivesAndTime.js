@@ -3,7 +3,7 @@ import TimeInfo from "./TimeInfo";
 
 export default LivesAndTime
 
-function LivesAndTime({ mistakesAllowed, mistakes, time }) {
+function LivesAndTime({ mistakesAllowed, mistakes }) {
     const lives = useRef("");
     const heartsInitialised = useRef(true);
 
@@ -30,22 +30,15 @@ function LivesAndTime({ mistakesAllowed, mistakes, time }) {
     }
 
     return (
-        <div style={livesTimePos}>
-            <div style={livesStyle}>
-                {mistakesAllowed !== -1 && getLives()}
-            </div>
-
-            <TimeInfo time={time} />
+        <div style={livesStyle}>
+            {mistakesAllowed !== -1 && getLives()}
         </div>
     )
 }
 
-const livesTimePos = {
+const livesStyle = {
+    fontSize: "40px",
     position: "absolute",
     top: "8%",
     right: "8%"
-}
-
-const livesStyle = {
-    fontSize: "40px"
 }

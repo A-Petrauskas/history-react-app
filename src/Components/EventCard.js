@@ -2,10 +2,9 @@ import { Card } from 'react-bootstrap';
 import { Draggable } from 'react-beautiful-dnd';
 
 export default EventCard;
-//CHANGE INTO CONTEXT!!!!!!!!!!!!!! When it has already been fetched (not opened url directly)
+
 function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
     return (
-        //ADD BOTH NAME AND DESCRIPTION
         <div key={id}>
             <Draggable draggableId={id} index={index}>
                 {(provided) => (

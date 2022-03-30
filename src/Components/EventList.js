@@ -23,7 +23,7 @@ function EventList({ placedEvents }) {
 
 const wrapper = {
     padding: "50px",
-    backgroundColor: "#CBD4C2",
+    backgroundColor: "#EDC7B7",
     overflowX: "auto",
     display: "flex"
 }

@@ -6,6 +6,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import GameOverWindow from "../Components/GameOverWindow";
 import LivesAndTime from '../Components/LivesAndTime';
 import ScoreInfo from '../Components/ScoreInfo';
+import TimeInfo from '../Components/TimeInfo';
 
 
 export default LevelPlay;
@@ -118,12 +119,15 @@ function LevelPlay() {
                 <GameOverWindow gameId={gameId} gameStatus={gameStatus.current} score={score.current} levelId={levelId.id} />
             }
 
+            <ScoreInfo currentScore={score.current} />
+
             <LivesAndTime mistakesAllowed={mistakesAllowed.current}
-                time={timeConstraint.current}
                 mistakes={mistakes.current}
             />
 
-            <ScoreInfo currentScore={score.current} />
+            {timeConstraint.current !== -1 &&
+                <TimeInfo time={timeConstraint.current} />
+            }
 
             <DragDropContext onDragEnd={onDragEnd}>
                 <div style={textStyle}>
@@ -157,7 +161,8 @@ const textStyle = {
 
 const newEventStyle = {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: "50px",
 }
 
 const placedEventsStyle = {
