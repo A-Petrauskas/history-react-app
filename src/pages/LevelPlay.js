@@ -121,13 +121,15 @@ function LevelPlay() {
 
             <ScoreInfo currentScore={score.current} />
 
-            <LivesAndTime mistakesAllowed={mistakesAllowed.current}
-                mistakes={mistakes.current}
-            />
+            <div style={livesAndTimeStyle}>
+                <LivesAndTime mistakesAllowed={mistakesAllowed.current}
+                    mistakes={mistakes.current}
+                />
 
-            {timeConstraint.current !== -1 &&
-                <TimeInfo time={timeConstraint.current} />
-            }
+                {timeConstraint.current !== -1 &&
+                    <TimeInfo time={timeConstraint.current} />
+                }
+            </div>
 
             <DragDropContext onDragEnd={onDragEnd}>
                 <div style={textStyle}>
@@ -170,4 +172,11 @@ const placedEventsStyle = {
     position: "fixed",
     width: "100%",
     top: "500px"
+}
+
+const livesAndTimeStyle = {
+    verticalAlign: "middle",
+    position: "absolute",
+    top: "10%",
+    right: "10%",
 }

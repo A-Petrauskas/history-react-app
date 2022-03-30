@@ -45,9 +45,9 @@ function TimeInfo({ time }) {
 
 const timeStyle = {
     textShadow: "2px 2px 1px grey",
-    fontSize: "45px",
+    fontSize: "50px",
     fontFamily: "Oswald, sans-serif",
-    position: "absolute",
-    top: "15%",
-    right: "10%"
+    marginTop: "30px",
+    display: "flex",
+    justifyContent: "center"
 }

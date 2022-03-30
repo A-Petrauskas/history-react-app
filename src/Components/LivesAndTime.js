@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import TimeInfo from "./TimeInfo";
 
 export default LivesAndTime
 
@@ -37,8 +36,7 @@ function LivesAndTime({ mistakesAllowed, mistakes }) {
 }
 
 const livesStyle = {
-    fontSize: "40px",
-    position: "absolute",
-    top: "8%",
-    right: "8%"
+    fontSize: "50px",
+    display: "flex",
+    justifyContent: "center"
 }
