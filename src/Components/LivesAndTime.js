@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import TimeInfo from "./TimeInfo";
 
 export default LivesAndTime
 
@@ -7,13 +8,13 @@ function LivesAndTime({ mistakesAllowed, mistakes, time }) {
     const heartsInitialised = useRef(true);
 
     function getLives() {
-        if (mistakes === 0 && heartsInitialised.current) {
+        if (mistakesAllowed === 0 && mistakes === 0) {
+            return lives.current = "❤";
+        }
+        else if (mistakes === 0) {
             heartsInitialised.current = false;
             lives.current = "❤".repeat(mistakesAllowed);
             return lives.current;
-        }
-        else if (mistakes === 0) {
-            return lives.current = "❤";
         }
 
         let newLives = setCharAt(lives.current, mistakes - 1, "✖");
@@ -34,9 +35,7 @@ function LivesAndTime({ mistakesAllowed, mistakes, time }) {
                 {mistakesAllowed !== -1 && getLives()}
             </div>
 
-            <div style={timeStyle}>
-                time:
-            </div>
+            <TimeInfo time={time} />
         </div>
     )
 }
@@ -48,9 +47,5 @@ const livesTimePos = {
 }
 
 const livesStyle = {
-    fontSize: "40px"
-}
-
-const timeStyle = {
     fontSize: "40px"
 }
