@@ -20,7 +20,7 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
 
     return (
         <div>
-            <Card style={{ width: '18rem' }} bg={"#FEF2D7"}>
+            <Card style={levelCardStyle} bg={"#FEF2D7"}>
                 <Card.Img variant="top" src={imageSrc} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
@@ -41,4 +41,9 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
             </Card>
         </div>
     )
+}
+
+const levelCardStyle = {
+    fontFamily: "Oswald, sans-serif",
+    width: '18rem'
 }
