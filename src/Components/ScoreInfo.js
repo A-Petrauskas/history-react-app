@@ -11,7 +11,7 @@ function ScoreInfo({ currentScore }) {
 const scoreStyle = {
     position: "absolute",
     top: "8%",
-    left: "10%",
+    left: "8%",
 
     textShadow: "2px 2px 1px grey",
     fontSize: "50px",

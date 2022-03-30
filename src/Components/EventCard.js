@@ -6,7 +6,7 @@ export default EventCard;
 function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
     return (
         //ADD BOTH NAME AND DESCRIPTION
-        <div >
+        <div key={id}>
             <Draggable draggableId={id} index={index}>
                 {(provided) => (
 

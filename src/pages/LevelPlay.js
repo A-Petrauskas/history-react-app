@@ -41,7 +41,7 @@ function LevelPlay() {
             .then(data => {
                 setGameId(data.gameId);
                 timeConstraint.current = data.timeConstraint;
-                mistakesAllowed.current = data.mistakesAllowed; //JUST ADDED THIS
+                mistakesAllowed.current = data.mistakesAllowed;
             });
     }, [levelId]);
 
@@ -118,7 +118,10 @@ function LevelPlay() {
                 <GameOverWindow gameId={gameId} gameStatus={gameStatus.current} score={score.current} levelId={levelId.id} />
             }
 
-            <LivesAndTime />
+            <LivesAndTime mistakesAllowed={mistakesAllowed.current}
+                time={timeConstraint.current}
+                mistakes={mistakes.current}
+            />
 
             <ScoreInfo currentScore={score.current} />
 
