@@ -7,6 +7,7 @@ import GameOverWindow from "../Components/GameOverWindow";
 import LivesAndTime from '../Components/LivesAndTime';
 import ScoreInfo from '../Components/ScoreInfo';
 import TimeInfo from '../Components/TimeInfo';
+import TimelineArrow from '../Components/TimelineArrow';
 
 
 export default LevelPlay;
@@ -162,6 +163,8 @@ function LevelPlay() {
                     </div>
                 </div>
             </DragDropContext>
+
+            <TimelineArrow />
         </div>
     )
 }
