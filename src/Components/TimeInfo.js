@@ -5,6 +5,7 @@ export default TimeInfo
 function TimeInfo({ time, passTimeIsUp, gameOver }) {
     const timeSet = useRef(true);
     const timeIsUp = useRef(false);
+    const timerDone = useRef(false);
     const [seconds, setSeconds] = useState(time);
     const [minutes, setMinutes] = useState(time);
 
@@ -29,6 +30,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(myInterval);
+                    timerDone.current = true;
                 } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);
@@ -40,7 +42,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
         };
     });
 
-    if (seconds === 0 && minutes === 0) {
+    if (timerDone.current) {
         timeIsUp.current = true;
     }
 
