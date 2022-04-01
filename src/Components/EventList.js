@@ -11,7 +11,7 @@ function EventList({ placedEvents }) {
                 <div ref={provided.innerRef} {...provided.droppableProps}
                     style={wrapper}>
                     {placedEvents.map((event, i) => (
-                        <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} />
+                        <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} key={'Card-' + i} />
                     ))}
 
                     {provided.placeholder}

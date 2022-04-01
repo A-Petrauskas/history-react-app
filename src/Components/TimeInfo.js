@@ -4,6 +4,7 @@ export default TimeInfo
 
 function TimeInfo({ time, passTimeIsUp }) {
     const timeSet = useRef(true);
+    const timeIsUp = useRef(false);
     const [seconds, setSeconds] = useState(time);
     const [minutes, setMinutes] = useState(time);
 
@@ -37,8 +38,14 @@ function TimeInfo({ time, passTimeIsUp }) {
     });
 
     if (seconds === 0 && minutes === 0) {
-        passTimeIsUp(true);
+        timeIsUp.current = true;
     }
+
+    useEffect(() => {
+        if (timeIsUp.current) {
+            passTimeIsUp(true);
+        }
+    }, [timeIsUp.current])
 
     return (
         <div style={timeStyle}>

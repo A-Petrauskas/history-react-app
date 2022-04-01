@@ -50,13 +50,13 @@ function LevelPlay() {
     }, [levelId]);
 
 
-    function fetchNextEvent() {
+    function fetchNextEvent(pIndex) {
         return fetch(`http://localhost:5000/history/game/${gameId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ placementIndex: placementIndex.current })
+            body: JSON.stringify({ placementIndex: pIndex })
         })
             .then(response => response.json())
             .then(data => {
@@ -83,7 +83,7 @@ function LevelPlay() {
 
     useEffect(() => {
         if (gameId !== "") {
-            fetchNextEvent();
+            fetchNextEvent(placementIndex.current);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [gameId, firstEvent]);
@@ -91,7 +91,7 @@ function LevelPlay() {
 
     if (timeIsUp && !timeOutSent.current) {
         timeOutSent.current = true;
-        fetchNextEvent();
+        fetchNextEvent(-1);
     }
 
 
@@ -108,7 +108,7 @@ function LevelPlay() {
 
         placementIndex.current = destination.index;
 
-        fetchNextEvent().then(() => {
+        fetchNextEvent(placementIndex.current).then(() => {
             if (mistakeMade.current) {
                 mistakeMade.current = false;
             }
