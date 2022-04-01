@@ -4,7 +4,7 @@ import EventList from "../Components/EventList"
 import EventCard from "../Components/EventCard";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import GameOverWindow from "../Components/GameOverWindow";
-import LivesAndTime from '../Components/LivesAndTime';
+import LivesInfo from '../Components/LivesInfo';
 import ScoreInfo from '../Components/ScoreInfo';
 import TimeInfo from '../Components/TimeInfo';
 
@@ -110,6 +110,7 @@ function LevelPlay() {
         fetchNextEvent(placementIndex.current).then(() => {
             if (mistakeMade.current) {
                 mistakeMade.current = false;
+                return;
             }
             else {
                 score.current++;
@@ -130,9 +131,9 @@ function LevelPlay() {
             <ScoreInfo currentScore={score.current} />
 
             <div style={livesAndTimeStyle}>
-                <LivesAndTime mistakesAllowed={mistakesAllowed.current}
-                    mistakes={mistakes.current}
-                />
+                {mistakesAllowed.current !== -1 &&
+                    <LivesInfo mistakesAllowed={mistakesAllowed.current} mistakes={mistakes.current} />
+                }
 
                 {timeConstraint.current !== -1 &&
                     <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} gameOver={gameOver.current} />

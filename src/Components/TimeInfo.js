@@ -5,7 +5,7 @@ export default TimeInfo
 function TimeInfo({ time, passTimeIsUp, gameOver }) {
     const timeSet = useRef(true);
     const timeIsUp = useRef(false);
-    const timerDone = useRef(false);
+    const [timerDone, SetTimerDone] = useState(false);
     const [seconds, setSeconds] = useState(time);
     const [minutes, setMinutes] = useState(time);
 
@@ -22,6 +22,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
     useEffect(() => {
         let myInterval = setInterval(() => {
             if (gameOver) {
+                SetTimerDone(true);
                 return;
             }
             if (seconds > 0) {
@@ -30,7 +31,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(myInterval);
-                    timerDone.current = true;
+                    SetTimerDone(true);
                 } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);
@@ -42,7 +43,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
         };
     });
 
-    if (timerDone.current) {
+    if (timerDone) {
         timeIsUp.current = true;
     }
 
@@ -51,7 +52,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
             passTimeIsUp(true);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [timeIsUp.current])
+    }, [timeIsUp.current]);
 
     return (
         <div style={timeStyle}>
