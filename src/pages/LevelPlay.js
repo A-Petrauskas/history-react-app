@@ -131,14 +131,12 @@ function LevelPlay() {
             <ScoreInfo currentScore={score.current} />
 
             <div style={livesAndTimeStyle}>
-                {!gameOver.current &&
-                    <LivesAndTime mistakesAllowed={mistakesAllowed.current}
-                        mistakes={mistakes.current}
-                    />
-                }
+                <LivesAndTime mistakesAllowed={mistakesAllowed.current}
+                    mistakes={mistakes.current}
+                />
 
                 {timeConstraint.current !== -1 &&
-                    <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} />
+                    <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} gameOver={gameOver.current} />
                 }
             </div>
 

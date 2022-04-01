@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 
 export default TimeInfo
 
-function TimeInfo({ time, passTimeIsUp }) {
+function TimeInfo({ time, passTimeIsUp, gameOver }) {
     const timeSet = useRef(true);
     const timeIsUp = useRef(false);
     const [seconds, setSeconds] = useState(time);
@@ -20,12 +20,15 @@ function TimeInfo({ time, passTimeIsUp }) {
 
     useEffect(() => {
         let myInterval = setInterval(() => {
+            if (gameOver) {
+                return;
+            }
             if (seconds > 0) {
                 setSeconds(seconds - 1);
             }
             if (seconds === 0) {
                 if (minutes === 0) {
-                    clearInterval(myInterval)
+                    clearInterval(myInterval);
                 } else {
                     setMinutes(minutes - 1);
                     setSeconds(59);
@@ -45,6 +48,7 @@ function TimeInfo({ time, passTimeIsUp }) {
         if (timeIsUp.current) {
             passTimeIsUp(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeIsUp.current])
 
     return (
