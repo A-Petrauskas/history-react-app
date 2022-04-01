@@ -1,23 +1,29 @@
 import React from "react";
 import EventCard from './EventCard'
 import { Droppable } from "react-beautiful-dnd";
+import TimelineArrow from '../Components/TimelineArrow';
 
 export default EventList;
 
 function EventList({ placedEvents }) {
     return (
-        <Droppable droppableId="placedEvents" direction="horizontal">
-            {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}
-                    style={wrapper}>
-                    {placedEvents.map((event, i) => (
-                        <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} key={'Card-' + i} />
-                    ))}
+        <div>
+            <Droppable droppableId="placedEvents" direction="horizontal">
+                {(provided) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}
+                        style={wrapper}>
+                        {placedEvents.map((event, i) => (
+                            <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} key={'Card-' + i} />
+                        ))}
 
-                    {provided.placeholder}
-                </div>
-            )}
-        </Droppable>
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+
+            <TimelineArrow />
+        </div>
+
     );
 }
 
