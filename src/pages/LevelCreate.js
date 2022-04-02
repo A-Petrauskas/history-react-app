@@ -2,6 +2,7 @@ import NewEventForm from "../Components/NewEventForm";
 import { DragDropContext } from "react-beautiful-dnd";
 import React, { useState } from 'react';
 import AddedEventsList from "../Components/AddedEventsList";
+import LevelInfoForm from "../Components/LevelInfoForm";
 
 export default LevelCreate;
 
@@ -39,14 +40,14 @@ function LevelCreate() {
             </div>
 
             <DragDropContext onDragEnd={onDragEnd}>
-
                 <div >
                     {addedEvents.length > 0 &&
                         <AddedEventsList addedEvents={addedEvents} />
                     }
                 </div>
-
             </DragDropContext>
+
+            <LevelInfoForm addedEvents={addedEvents} />
         </div>
     )
 }
