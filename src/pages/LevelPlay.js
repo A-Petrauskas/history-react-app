@@ -88,7 +88,7 @@ function LevelPlay() {
     }, [gameId, firstEvent]);
 
 
-    if (timeIsUp && !timeOutSent.current) { //whyyy check network tab for -1
+    if (timeIsUp && !timeOutSent.current) {
         timeOutSent.current = true;
         fetchNextEvent(-1);
     }

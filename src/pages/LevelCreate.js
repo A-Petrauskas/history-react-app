@@ -1,18 +1,16 @@
+import NewEventForm from "../Components/NewEventForm";
+
 export default LevelCreate;
 
 function LevelCreate() {
     return (
         <div>
             <div>
-                Creating Levels
+                Suggested events
+            </div>
 
-                <div>
-                    Suggested events
-                </div>
-
-                <div>
-                    Creating custom event
-                </div>
+            <div>
+                <NewEventForm />
             </div>
 
             <div>

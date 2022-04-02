@@ -6,7 +6,7 @@ export default EventCard;
 function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
     return (
         <div key={id}>
-            <Draggable draggableId={id} index={index}>
+            <Draggable draggableId={id} index={index} isDragDisabled={dragDisabled}>
                 {(provided) => (
 
                     <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
@@ -37,6 +37,10 @@ const imageStyle = {
 const getEventStyle = (draggableStyle) => ({
     userSelect: "none",
     margin: `0 20px 0 0`,
+    maxWidth: "300px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 
 
     ...draggableStyle
