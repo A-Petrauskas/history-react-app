@@ -1,21 +1,52 @@
 import NewEventForm from "../Components/NewEventForm";
+import { DragDropContext } from "react-beautiful-dnd";
+import React, { useState } from 'react';
+import AddedEventsList from "../Components/AddedEventsList";
 
 export default LevelCreate;
 
 function LevelCreate() {
+    const [addedEvents, setAddedEvents] = useState([]);
+
+    let onDragEnd = (result) => {
+        const { destination, source } = result;
+
+        if (!destination) {
+            addedEvents.splice(source.index, 1);
+        }
+
+        if (destination.droppableId === source.droppableId && destination.index === source.index) {
+            return;
+        }
+
+        const finish = reorder(addedEvents, source.index, destination.index)
+        setAddedEvents(finish);
+
+    }
+
+    const reorder = (list, startIndex, endIndex) => {
+        const result = Array.from(list);
+        const [removed] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removed);
+
+        return result;
+    };
+
     return (
         <div>
             <div>
-                Suggested events
+                <NewEventForm setAddedEvents={setAddedEvents} />
             </div>
 
-            <div>
-                <NewEventForm />
-            </div>
+            <DragDropContext onDragEnd={onDragEnd}>
 
-            <div>
-                Small event cards for events added to level
-            </div>
+                <div >
+                    {addedEvents.length > 0 &&
+                        <AddedEventsList addedEvents={addedEvents} />
+                    }
+                </div>
+
+            </DragDropContext>
         </div>
     )
 }

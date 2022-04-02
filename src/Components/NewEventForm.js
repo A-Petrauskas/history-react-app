@@ -3,7 +3,7 @@ import EventImageUpload from "./EventImageUpload";
 
 export default NewEventForm;
 
-function NewEventForm() {
+function NewEventForm({ setAddedEvents }) {
     const [inputs, setInputs] = useState({
         description: "",
         date: "",
@@ -18,7 +18,8 @@ function NewEventForm() {
     }
 
     const handleSubmit = (event) => {
-        alert(inputs.description);
+        event.preventDefault();
+        setAddedEvents(setEvents => [...setEvents, inputs]);
     }
 
     return (
@@ -38,13 +39,13 @@ function NewEventForm() {
                     value={inputs.date || ""}
                     onChange={handleChange} />
 
-                <input type="submit" />
-
                 <EventImageUpload setInputs={setInputs} />
 
-                {inputs.imageSrc &&
-                    <img src={inputs.imageSrc} alt={"Represents newly created event"} />}
+                <input type="submit" />
             </form>
+
+            {inputs.imageSrc &&
+                <img src={inputs.imageSrc} alt={"Represents newly created event"} />}
         </div>
     );
 }

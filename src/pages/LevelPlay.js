@@ -154,11 +154,9 @@ function LevelPlay() {
                         )}
                     </Droppable>
 
-                    <div style={placedEventsStyle}>
-                        {placedEvents.length > 0 &&
-                            <EventList placedEvents={placedEvents} />
-                        }
-                    </div>
+                    {placedEvents.length > 0 &&
+                        <EventList placedEvents={placedEvents} direction="horizontal" dragDisabled={true} />
+                    }
                 </div>
             </DragDropContext>
         </div>
@@ -174,13 +172,6 @@ const newEventStyle = {
     display: "flex",
     justifyContent: "center",
     padding: "50px",
-}
-
-const placedEventsStyle = {
-    marginTop: "50px",
-    position: "fixed",
-    width: "100%",
-    top: "50%"
 }
 
 const livesAndTimeStyle = {

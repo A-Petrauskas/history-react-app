@@ -5,15 +5,15 @@ import TimelineArrow from '../Components/TimelineArrow';
 
 export default EventList;
 
-function EventList({ placedEvents }) {
+function EventList({ placedEvents, direction, dragDisabled }) {
     return (
-        <div>
-            <Droppable droppableId="placedEvents" direction="horizontal">
+        <div style={placedEventsStyle}>
+            <Droppable droppableId="placedEvents" direction={direction}>
                 {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}
                         style={wrapper}>
                         {placedEvents.map((event, i) => (
-                            <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={true} key={'Card-' + i} />
+                            <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={dragDisabled} key={'Card-' + i} />
                         ))}
 
                         {provided.placeholder}
@@ -32,4 +32,11 @@ const wrapper = {
     backgroundColor: "#EDC7B7",
     overflowX: "auto",
     display: "flex"
+}
+
+const placedEventsStyle = {
+    marginTop: "50px",
+    position: "fixed",
+    width: "100%",
+    top: "50%"
 }
