@@ -4,15 +4,15 @@ import EventCardSmallDraggable from "./EventCardSmallDraggable";
 
 export default SmallEventCardList
 
-function SmallEventCardList({ addedEvents }) {
+function SmallEventCardList({ addedEvents, eventIdName, droppableIdName }) {
     return (
         <div style={addedEventsStyle}>
-            <Droppable droppableId="addedEvents" direction={"vertical"}>
+            <Droppable droppableId={droppableIdName} direction={"vertical"}>
                 {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}
                         style={wrapper}>
                         {addedEvents.map((event, i) => (
-                            <EventCardSmallDraggable {...event} index={i} id={'Card-' + i} key={'Card-' + i} />
+                            <EventCardSmallDraggable {...event} index={i} id={eventIdName + i} key={eventIdName + i} />
                         ))}
 
                         {provided.placeholder}

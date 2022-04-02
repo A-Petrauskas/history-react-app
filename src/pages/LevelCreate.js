@@ -22,6 +22,9 @@ function LevelCreate() {
     let onDragEnd = (result) => {
         const { destination, source } = result;
 
+        if (source.droppableId === "newEvents" && destination.droppableId !== "newEvents")
+            addedEvents.splice(source.index, 1);
+
         if (!destination) {
             return;
         }
@@ -52,14 +55,12 @@ function LevelCreate() {
             <DragDropContext onDragEnd={onDragEnd}>
                 <div style={allEventsStyle}>
                     {allEvents.length > 0 &&
-                        <SmallEventCardList addedEvents={allEvents} />
+                        <SmallEventCardList addedEvents={allEvents} eventIdName={"oldEvent"} droppableIdName={"allEvents"} />
                     }
                 </div>
 
-                <div >
-                    {addedEvents.length > 0 &&
-                        <SmallEventCardList addedEvents={addedEvents} />
-                    }
+                <div style={newEventsStyle}>
+                    <SmallEventCardList addedEvents={addedEvents} eventIdName={"newEvent"} droppableIdName={"newEvents"} />
                 </div>
             </DragDropContext>
 
@@ -69,7 +70,15 @@ function LevelCreate() {
 }
 
 const allEventsStyle = {
+    position: "fixed",
+    overflowX: "auto",
+    maxHeight: "70%",
+    left: "40%"
+}
+
+const newEventsStyle = {
     position: "absolute",
     overflowX: "auto",
-    maxHeight: "70%"
+    maxHeight: "70%",
+    left: "70%"
 }

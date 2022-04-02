@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventImageUpload from "./EventImageUpload";
 
 export default LevelInfoForm;
@@ -10,8 +10,12 @@ function LevelInfoForm({ addedEvents }) {
         timeConstraint: undefined,
         mistakes: undefined,
         imageSrc: undefined,
-        events: addedEvents
+        events: []
     });
+
+    useEffect(() => {
+        setLevelInfo(values => ({ ...values, events: addedEvents }))
+    }, [addedEvents]);
 
     const handleChange = (event) => {
         let name = event.target.name;
@@ -22,6 +26,7 @@ function LevelInfoForm({ addedEvents }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(levelInfo);
         //TODO: FETCH POST
     }
 
