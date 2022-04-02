@@ -63,7 +63,7 @@ function LevelInfoForm({ addedEvents }) {
             </form>
 
             {levelInfo.imageSrc &&
-                <img src={levelInfo.imageSrc} alt={"Represents newly created event"} />}
+                <img src={levelInfo.imageSrc} alt={"Represents the level being created"} />}
         </div>
     );
 }

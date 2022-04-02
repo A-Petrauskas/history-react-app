@@ -51,6 +51,10 @@ const getEventStyle = (draggableStyle) => ({
     background: "#EEE2DC",
     fontWeight: "bold",
     minWidth: "300px",
+    maxWidth: "300px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 
     ...draggableStyle
 });

@@ -2,9 +2,9 @@ import { Droppable } from "react-beautiful-dnd";
 import EventCardSmallDraggable from "./EventCardSmallDraggable";
 
 
-export default AddedEventsList
+export default SmallEventCardList
 
-function AddedEventsList({ addedEvents }) {
+function SmallEventCardList({ addedEvents }) {
     return (
         <div style={addedEventsStyle}>
             <Droppable droppableId="addedEvents" direction={"vertical"}>

@@ -1,19 +1,29 @@
 import NewEventForm from "../Components/NewEventForm";
 import { DragDropContext } from "react-beautiful-dnd";
-import React, { useState } from 'react';
-import AddedEventsList from "../Components/AddedEventsList";
+import React, { useEffect, useState } from 'react';
+import SmallEventCardList from "../Components/SmallEventCardList";
 import LevelInfoForm from "../Components/LevelInfoForm";
 
 export default LevelCreate;
 
 function LevelCreate() {
     const [addedEvents, setAddedEvents] = useState([]);
+    const [allEvents, setAllEvents] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/history/events")
+            .then(response => response.json())
+            .then(events => {
+                setAllEvents(events);
+            })
+
+    }, []);
 
     let onDragEnd = (result) => {
         const { destination, source } = result;
 
         if (!destination) {
-            addedEvents.splice(source.index, 1);
+            return;
         }
 
         if (destination.droppableId === source.droppableId && destination.index === source.index) {
@@ -40,9 +50,15 @@ function LevelCreate() {
             </div>
 
             <DragDropContext onDragEnd={onDragEnd}>
+                <div style={allEventsStyle}>
+                    {allEvents.length > 0 &&
+                        <SmallEventCardList addedEvents={allEvents} />
+                    }
+                </div>
+
                 <div >
                     {addedEvents.length > 0 &&
-                        <AddedEventsList addedEvents={addedEvents} />
+                        <SmallEventCardList addedEvents={addedEvents} />
                     }
                 </div>
             </DragDropContext>
@@ -50,4 +66,10 @@ function LevelCreate() {
             <LevelInfoForm addedEvents={addedEvents} />
         </div>
     )
+}
+
+const allEventsStyle = {
+    position: "absolute",
+    overflowX: "auto",
+    maxHeight: "70%"
 }
