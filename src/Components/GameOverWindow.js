@@ -54,8 +54,8 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
                 }
 
 
-                <Button variant="primary" style={{ width: "33%", height: "50px" }}>View Level</Button>{''}
-                <Button variant="success" style={{ width: "33%", height: "50px", right: "0", bottom: "0", position: "absolute" }} onClick={() => refreshPage()}>Play Again</Button>{''}
+                <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
+                <Button variant="success" style={playButtonStyle} onClick={() => refreshPage()}>Play Again</Button>{''}
 
             </div>
         </div>
@@ -69,24 +69,38 @@ const dimBackground = {
     height: "100%",
     zIndex: "1000",
     position: "absolute",
-    padding: "8px"
+    padding: "8px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 }
 
 const boxStyle = {
     display: "flex",
     flexWrap: "wrap",
     position: "absolute",
-    top: "20%",
-    left: "30%",
     margin: "-25px 0 0 -25px",
     textAlign: "center",
     color: "black",
     fontSize: "large",
-    background: "#EDC7B7",
+    background: "#EDC7B7"
 }
 
 const borderLine = {
     borderBottom: "1px solid black",
     margin: "10px 0px",
     display: "inline-block"
+}
+
+const playButtonStyle = {
+    width: "33%",
+    height: "50px",
+    right: "0",
+    bottom: "0",
+    position: "absolute"
+}
+
+const viewButtonStyle = {
+    width: "33%",
+    height: "50px"
 }

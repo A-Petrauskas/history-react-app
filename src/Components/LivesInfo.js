@@ -7,10 +7,10 @@ function LivesInfo({ mistakesAllowed, mistakes }) {
 
     useEffect(() => {
         if (mistakesAllowed === 0 && mistakes === 0) {
-            setLives("❤");
+            setLives('\u26AB');
         }
         else if (mistakes === 0) {
-            setLives("❤".repeat(mistakesAllowed));
+            setLives('\u26AB'.repeat(mistakesAllowed));
         }
         else {
             let newLives = setCharAt(lives, mistakes - 1, "✖");
@@ -32,6 +32,6 @@ function LivesInfo({ mistakesAllowed, mistakes }) {
 }
 
 const livesStyle = {
-    fontSize: "50px",
+    fontSize: "30px",
     textAlign: "center"
 }

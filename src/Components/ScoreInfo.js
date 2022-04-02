@@ -14,6 +14,6 @@ const scoreStyle = {
     left: "8%",
 
     textShadow: "2px 2px 1px grey",
-    fontSize: "60px",
+    fontSize: "50px",
     fontFamily: "Oswald, sans-serif"
 }
