@@ -22,14 +22,16 @@ function LevelCreate() {
     let onDragEnd = (result) => {
         const { destination, source } = result;
 
-        if (source.droppableId === "newEvents" && destination.droppableId !== "newEvents")
+        if (source.droppableId === "newEvents" && !destination) {
             addedEvents.splice(source.index, 1);
-
-        if (!destination) {
+        }
+        else if (source.droppableId === "newEvents" && destination.droppableId !== "newEvents") {
+            addedEvents.splice(source.index, 1);
+        }
+        else if (!destination) {
             return;
         }
-
-        if (destination.droppableId === source.droppableId && destination.index === source.index) {
+        else if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }
 
