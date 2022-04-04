@@ -19,6 +19,7 @@ function LevelCreate() {
 
     }, []);
 
+
     let onDragEnd = (result) => {
         const { destination, source, draggableId } = result;
 
@@ -37,11 +38,19 @@ function LevelCreate() {
         }
 
         let idNumber = parseInt(draggableId.match(/\d+$/));
+
+        if (addedEvents.some(e => e.description === allEvents[idNumber].description
+            && e.date === allEvents[idNumber].date)) {
+            return;
+        }
+
+
         let finish = addedEvents.slice();
         finish.splice(destination.index, 0, allEvents[idNumber]);
 
         setAddedEvents(finish);
     }
+
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -55,7 +64,7 @@ function LevelCreate() {
         <div style={centerPage}>
             <div style={pageStyle}>
                 <div>
-                    <NewEventForm setAddedEvents={setAddedEvents} />
+                    <NewEventForm setAddedEvents={setAddedEvents} addedEvents={addedEvents} />
                 </div>
 
                 <div style={premadeEventsStyle}>

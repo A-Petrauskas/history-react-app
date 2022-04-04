@@ -3,7 +3,7 @@ import EventImageUpload from "./EventImageUpload";
 
 export default NewEventForm;
 
-function NewEventForm({ setAddedEvents }) {
+function NewEventForm({ setAddedEvents, addedEvents }) {
     const [inputs, setInputs] = useState({
         description: "",
         date: "",
@@ -19,7 +19,11 @@ function NewEventForm({ setAddedEvents }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setAddedEvents(setEvents => [...setEvents, inputs]);
+        if (!addedEvents.some(e => e.description === inputs.description
+            && e.date === inputs.date)) {
+
+            setAddedEvents(setEvents => [...setEvents, inputs]);
+        }
     }
 
     return (
