@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-export default EventImageUpload;
+export default FormImageUpload;
 
-function EventImageUpload({ setInputs }) {
+function FormImageUpload({ setInputs }) {
     const [selectedFile, setSelectedFile] = useState()
 
     useEffect(() => {

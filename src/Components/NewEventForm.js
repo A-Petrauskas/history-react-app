@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EventImageUpload from "./EventImageUpload";
+import FormImageUpload from "./FormImageUpload";
 
 export default NewEventForm;
 
@@ -28,6 +28,14 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
 
     return (
         <div style={formStyle}>
+            {inputs.imageSrc &&
+                <img src={inputs.imageSrc} alt={"Represents newly created event"} style={imageStyle} />
+            }
+
+            {!inputs.imageSrc &&
+                <div style={imagePlaceholder}></div>
+            }
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -43,13 +51,10 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
                     value={inputs.date || ""}
                     onChange={handleChange} />
 
-                <EventImageUpload setInputs={setInputs} />
+                <FormImageUpload setInputs={setInputs} />
 
                 <input type="submit" />
             </form>
-
-            {inputs.imageSrc &&
-                <img src={inputs.imageSrc} alt={"Represents newly created event"} />}
         </div>
     );
 }
@@ -57,4 +62,21 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
 const formStyle = {
     gridRow: "2 / 3",
     gridColumn: "2 / 3"
+}
+
+const imageStyle = {
+    width: "200px",
+    height: "200px",
+    objectFit: "cover",
+    pointerEvents: "none"
+}
+
+const imagePlaceholder = {
+    width: "200px",
+    height: "200px",
+    objectFit: "cover",
+    pointerEvents: "none",
+    background: "#BAB2B5",
+    borderStyle: "dashed",
+    borderColor: "grey"
 }

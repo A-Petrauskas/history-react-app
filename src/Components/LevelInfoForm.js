@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import EventImageUpload from "./EventImageUpload";
+import FormImageUpload from "./FormImageUpload";
 
 export default LevelInfoForm;
 
@@ -32,6 +32,14 @@ function LevelInfoForm({ addedEvents }) {
 
     return (
         <div style={formStyle}>
+
+            {levelInfo.imageSrc &&
+                <img src={levelInfo.imageSrc} alt={"Represents the level being created"} style={imageStyle} />}
+
+            {!levelInfo.imageSrc &&
+                <div style={imagePlaceholder}></div>
+            }
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -62,13 +70,10 @@ function LevelInfoForm({ addedEvents }) {
                     onChange={handleChange} />
 
 
-                <EventImageUpload setInputs={setLevelInfo} />
+                <FormImageUpload setInputs={setLevelInfo} />
 
                 <input type="submit" />
             </form>
-
-            {levelInfo.imageSrc &&
-                <img src={levelInfo.imageSrc} alt={"Represents the level being created"} />}
         </div>
     );
 }
@@ -76,4 +81,21 @@ function LevelInfoForm({ addedEvents }) {
 const formStyle = {
     gridRow: "4 / 5",
     gridColumn: "2 / 3"
+}
+
+const imageStyle = {
+    width: "200px",
+    height: "200px",
+    objectFit: "cover",
+    pointerEvents: "none"
+}
+
+const imagePlaceholder = {
+    width: "200px",
+    height: "200px",
+    objectFit: "cover",
+    pointerEvents: "none",
+    background: "#BAB2B5",
+    borderStyle: "dashed",
+    borderColor: "grey"
 }

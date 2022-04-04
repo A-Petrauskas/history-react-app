@@ -23,7 +23,8 @@ const imageStyle = {
     width: "100px",
     height: "91px",
     objectFit: "cover",
-    pointerEvents: "none"
+    pointerEvents: "none",
+    borderRadius: "8px"
 }
 
 const cardSeparation = {
@@ -39,5 +40,6 @@ const cardSeparation = {
 const cardStyle = {
     flexDirection: "row",
     background: "#EEE2DC",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    borderRadius: "8px"
 }

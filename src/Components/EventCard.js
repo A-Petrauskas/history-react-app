@@ -31,7 +31,8 @@ const imageStyle = {
     width: "200px",
     height: "200px",
     objectFit: "cover",
-    pointerEvents: "none"
+    pointerEvents: "none",
+    borderRadius: "8px"
 }
 
 const getEventStyle = (draggableStyle) => ({
@@ -41,6 +42,7 @@ const getEventStyle = (draggableStyle) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: "10px",
 
 
     ...draggableStyle

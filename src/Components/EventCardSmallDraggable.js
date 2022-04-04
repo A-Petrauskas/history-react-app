@@ -31,7 +31,8 @@ const imageStyle = {
     width: "100px",
     height: "91px",
     objectFit: "cover",
-    pointerEvents: "none"
+    pointerEvents: "none",
+    borderRadius: "8px"
 }
 
 const cardSeparation = {
@@ -55,6 +56,7 @@ const getEventStyle = (draggableStyle) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: "8px",
 
     ...draggableStyle
 });

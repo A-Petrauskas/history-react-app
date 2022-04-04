@@ -137,8 +137,7 @@ const premadeEventsStyle = {
     gridColumn: "1 / 2",
     fontSize: "30px",
     fontFamily: "Oswald, sans-serif",
-    textAlign: "center",
-
+    textAlign: "center"
 }
 
 const newEventsTextStyle = {
