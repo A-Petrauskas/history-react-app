@@ -119,14 +119,15 @@ const newEventsStyle = {
 
 const pageStyle = {
     display: "grid",
-    gridTemplateColumns: "330px 500px 330px",
-    gridTemplateRows: " 800px, 800px, 800px, 800px",
+    gridTemplateColumns: "400px 500px 400px",
+    gridTemplateRows: " 50px 300px 50px 300px",
     gap: "50px",
     padding: "50px 50px 50px 50px"
 }
 
 const centerPage = {
     display: "flex",
+    height: "100vh",
     justifyContent: "center",
     alignItems: "center"
 }
@@ -136,7 +137,8 @@ const premadeEventsStyle = {
     gridColumn: "1 / 2",
     fontSize: "30px",
     fontFamily: "Oswald, sans-serif",
-    textAlign: "center"
+    textAlign: "center",
+
 }
 
 const newEventsTextStyle = {
