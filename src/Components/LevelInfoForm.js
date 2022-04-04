@@ -32,48 +32,76 @@ function LevelInfoForm({ addedEvents }) {
 
     return (
         <div style={formStyle}>
+            <div style={formGrid}>
 
-            {levelInfo.imageSrc &&
-                <img src={levelInfo.imageSrc} alt={"Represents the level being created"} style={imageStyle} />}
+                {levelInfo.imageSrc &&
+                    <img src={levelInfo.imageSrc} alt={"Represents the level being created"} style={imageStyle} />}
 
-            {!levelInfo.imageSrc &&
-                <div style={imagePlaceholder}></div>
-            }
+                {!levelInfo.imageSrc &&
+                    <div style={imagePlaceholder}></div>
+                }
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Level Name"
-                    name="name"
-                    value={levelInfo.name || ""}
-                    onChange={handleChange} />
+                <form onSubmit={handleSubmit} style={formInputsGrid}>
+                    <input
+                        type="text"
+                        placeholder="Level Name"
+                        name="name"
+                        value={levelInfo.name || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "1 / 2",
+                            gridColumn: "2 / 3"
+                        }} />
 
-                <input
-                    type="text"
-                    placeholder="Level Description"
-                    name="description"
-                    value={levelInfo.description || ""}
-                    onChange={handleChange} />
+                    <textarea
+                        type="text"
+                        placeholder="Level Description"
+                        name="description"
+                        value={levelInfo.description || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "2 / 3",
+                            gridColumn: "2 / 3",
+                            resize: "none"
+                        }} />
 
-                <input
-                    type="number"
-                    placeholder="Time Constraint"
-                    name="timeConstraint"
-                    value={levelInfo.timeConstraint || ""}
-                    onChange={handleChange} />
+                    <input
+                        type="number"
+                        placeholder="Time Constraint"
+                        name="timeConstraint"
+                        value={levelInfo.timeConstraint || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "3 / 4",
+                            gridColumn: "2 / 3"
+                        }} />
 
-                <input
-                    type="number"
-                    placeholder="Allowed number of mistakes"
-                    name="mistakes"
-                    value={levelInfo.mistakes || ""}
-                    onChange={handleChange} />
+                    <input
+                        type="number"
+                        placeholder="Allowed number of mistakes"
+                        name="mistakes"
+                        value={levelInfo.mistakes || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "4 / 5",
+                            gridColumn: "2 / 3"
+                        }} />
 
+                    <div style={{
+                        gridRow: "4 / 5",
+                        gridColumn: "1 / 2",
+                        alignSelf: "start"
+                    }}>
+                        <FormImageUpload setInputs={setLevelInfo} />
+                    </div>
 
-                <FormImageUpload setInputs={setLevelInfo} />
-
-                <input type="submit" />
-            </form>
+                    <input type="submit" style={{
+                        gridRow: "5 / 6",
+                        gridColumn: "2 / 3",
+                        placeSelf: "center"
+                    }} />
+                </form>
+            </div>
         </div>
     );
 }
@@ -87,7 +115,9 @@ const imageStyle = {
     width: "200px",
     height: "200px",
     objectFit: "cover",
-    pointerEvents: "none"
+    pointerEvents: "none",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 3"
 }
 
 const imagePlaceholder = {
@@ -97,5 +127,23 @@ const imagePlaceholder = {
     pointerEvents: "none",
     background: "#BAB2B5",
     borderStyle: "dashed",
-    borderColor: "grey"
+    borderColor: "grey",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 3"
+}
+
+const formGrid = {
+    display: "grid",
+    gridTemplateColumns: "250px 200px",
+    gridTemplateRows: " 100px 100px 100px",
+    gap: "5px",
+}
+
+const formInputsGrid = {
+    gridRow: "1 / 4",
+    gridColumn: "1 / 3",
+    display: "grid",
+    gridTemplateColumns: "250px 200px",
+    gridTemplateRows: " 50px 100px 50px 50px 50px",
+    gap: "5px",
 }

@@ -28,47 +28,75 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
 
     return (
         <div style={formStyle}>
-            {inputs.imageSrc &&
-                <img src={inputs.imageSrc} alt={"Represents newly created event"} style={imageStyle} />
-            }
+            <div style={formGrid}>
 
-            {!inputs.imageSrc &&
-                <div style={imagePlaceholder}></div>
-            }
+                {inputs.imageSrc &&
+                    <img src={inputs.imageSrc} alt={"Represents newly created event"} style={imageStyle} />
+                }
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Event Description"
-                    name="description"
-                    value={inputs.description || ""}
-                    onChange={handleChange} />
+                {!inputs.imageSrc &&
+                    <div style={imagePlaceholder}></div>
+                }
 
-                <input
-                    type="number"
-                    placeholder="Date of Event"
-                    name="date"
-                    value={inputs.date || ""}
-                    onChange={handleChange} />
+                <form onSubmit={handleSubmit} style={formInputsGrid}>
+                    <textarea
+                        type="text"
+                        placeholder="Event Description"
+                        name="description"
+                        value={inputs.description || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "1 / 2",
+                            gridColumn: "2 / 3",
+                            resize: "none"
+                        }} />
 
-                <FormImageUpload setInputs={setInputs} />
+                    <input
+                        type="number"
+                        placeholder="Date of Event"
+                        name="date"
+                        value={inputs.date || ""}
+                        onChange={handleChange}
+                        style={{
+                            gridRow: "2 / 3",
+                            gridColumn: "2 / 3",
+                            placeSelf: "center"
+                        }} />
 
-                <input type="submit" />
-            </form>
+                    <div>
+                    </div>
+
+                    <div style={{
+                        gridRow: "3 / 4",
+                        gridColumn: "1 / 2",
+                        alignSelf: "start"
+                    }}>
+                        <FormImageUpload setInputs={setInputs} />
+                    </div>
+
+                    <input type="submit" style={{
+                        gridRow: "3 / 4",
+                        gridColumn: "2 / 3",
+                        placeSelf: "center"
+                    }} />
+                </form>
+            </div>
         </div>
     );
 }
 
 const formStyle = {
-    gridRow: "2 / 3",
-    gridColumn: "2 / 3"
+    gridRow: "1 / 4",
+    gridColumn: "1 / 3"
 }
 
 const imageStyle = {
     width: "200px",
     height: "200px",
     objectFit: "cover",
-    pointerEvents: "none"
+    pointerEvents: "none",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 3"
 }
 
 const imagePlaceholder = {
@@ -78,5 +106,23 @@ const imagePlaceholder = {
     pointerEvents: "none",
     background: "#BAB2B5",
     borderStyle: "dashed",
-    borderColor: "grey"
+    borderColor: "grey",
+    gridRow: "1 / 2",
+    gridColumn: "1 / 3"
+}
+
+const formGrid = {
+    display: "grid",
+    gridTemplateColumns: "250px 200px",
+    gridTemplateRows: " 100px 100px 100px",
+    gap: "5px",
+}
+
+const formInputsGrid = {
+    gridRow: "1 / 4",
+    gridColumn: "1 / 3",
+    display: "grid",
+    gridTemplateColumns: "250px 200px",
+    gridTemplateRows: " 100px 100px 100px",
+    gap: "5px",
 }
