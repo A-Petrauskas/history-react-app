@@ -49,38 +49,56 @@ function LevelCreate() {
     };
 
     return (
-        <div>
-            <div>
-                <NewEventForm setAddedEvents={setAddedEvents} />
+        <div style={centerPage}>
+            <div style={pageStyle}>
+                <div>
+                    <NewEventForm setAddedEvents={setAddedEvents} />
+                </div>
+
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <div style={allEventsStyle}>
+                        {allEvents.length > 0 &&
+                            <SmallEventCardList addedEvents={allEvents} eventIdName={"oldEvent"}
+                                droppableIdName={"allEvents"} isDropDisabled={true} />
+                        }
+                    </div>
+
+                    <div style={newEventsStyle}>
+                        <SmallEventCardList addedEvents={addedEvents} eventIdName={"newEvent"}
+                            droppableIdName={"newEvents"} isDropDisabled={false} />
+                    </div>
+                </DragDropContext>
+
+                <LevelInfoForm addedEvents={addedEvents} />
             </div>
-
-            <DragDropContext onDragEnd={onDragEnd}>
-                <div style={allEventsStyle}>
-                    {allEvents.length > 0 &&
-                        <SmallEventCardList addedEvents={allEvents} eventIdName={"oldEvent"} droppableIdName={"allEvents"} />
-                    }
-                </div>
-
-                <div style={newEventsStyle}>
-                    <SmallEventCardList addedEvents={addedEvents} eventIdName={"newEvent"} droppableIdName={"newEvents"} />
-                </div>
-            </DragDropContext>
-
-            <LevelInfoForm addedEvents={addedEvents} />
         </div>
     )
 }
 
 const allEventsStyle = {
-    position: "fixed",
     overflowX: "auto",
-    maxHeight: "70%",
-    left: "40%"
+    gridRow: "1 / 3",
+    maxHeight: "800px",
+    gridColumn: "1 / 2"
 }
 
 const newEventsStyle = {
-    position: "absolute",
     overflowX: "auto",
-    maxHeight: "70%",
-    left: "70%"
+    gridRow: "1 / 3",
+    maxHeight: "800px",
+    gridColumn: "3 / 4"
+}
+
+const pageStyle = {
+    display: "grid",
+    gridTemplateColumns: "330px 500px 330px",
+    gridTemplateRows: " 800px, 800px",
+    gap: "50px",
+    padding: "100px 50px 50px 50px"
+}
+
+const centerPage = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 }

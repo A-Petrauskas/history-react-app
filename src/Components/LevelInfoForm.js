@@ -31,7 +31,7 @@ function LevelInfoForm({ addedEvents }) {
     }
 
     return (
-        <div>
+        <div style={formStyle}>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -71,4 +71,9 @@ function LevelInfoForm({ addedEvents }) {
                 <img src={levelInfo.imageSrc} alt={"Represents the level being created"} />}
         </div>
     );
+}
+
+const formStyle = {
+    gridRow: "2 / 3",
+    gridColumn: "2 / 3"
 }

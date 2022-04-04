@@ -23,7 +23,7 @@ function NewEventForm({ setAddedEvents }) {
     }
 
     return (
-        <div>
+        <div style={formStyle}>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -48,4 +48,9 @@ function NewEventForm({ setAddedEvents }) {
                 <img src={inputs.imageSrc} alt={"Represents newly created event"} />}
         </div>
     );
+}
+
+const formStyle = {
+    gridRow: "1 / 2",
+    gridColumn: "2 / 3"
 }

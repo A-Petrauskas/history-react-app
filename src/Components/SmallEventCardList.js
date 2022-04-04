@@ -4,10 +4,10 @@ import EventCardSmallDraggable from "./EventCardSmallDraggable";
 
 export default SmallEventCardList
 
-function SmallEventCardList({ addedEvents, eventIdName, droppableIdName }) {
+function SmallEventCardList({ addedEvents, eventIdName, droppableIdName, isDropDisabled }) {
     return (
         <div style={addedEventsStyle}>
-            <Droppable droppableId={droppableIdName} direction={"vertical"}>
+            <Droppable droppableId={droppableIdName} direction={"vertical"} isDropDisabled={isDropDisabled}>
                 {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}
                         style={wrapper}>
@@ -31,4 +31,6 @@ const addedEventsStyle = {
 
 const wrapper = {
     backgroundColor: "#EDC7B7",
+    height: "800px",
+    width: "330px"
 }
