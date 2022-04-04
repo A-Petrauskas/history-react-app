@@ -55,6 +55,22 @@ function LevelCreate() {
                     <NewEventForm setAddedEvents={setAddedEvents} />
                 </div>
 
+                <div style={premadeEventsStyle}>
+                    Events you could use:
+                </div>
+
+                <div style={newEventsTextStyle}>
+                    Events in your level:
+                </div>
+
+                <div style={createEventStyle}>
+                    Create a new Event:
+                </div>
+
+                <div style={createLevelStyle}>
+                    Finalise your level:
+                </div>
+
                 <DragDropContext onDragEnd={onDragEnd}>
                     <div style={allEventsStyle}>
                         {allEvents.length > 0 &&
@@ -77,14 +93,14 @@ function LevelCreate() {
 
 const allEventsStyle = {
     overflowX: "auto",
-    gridRow: "1 / 3",
+    gridRow: "2 / 5",
     maxHeight: "800px",
     gridColumn: "1 / 2"
 }
 
 const newEventsStyle = {
     overflowX: "auto",
-    gridRow: "1 / 3",
+    gridRow: "2 / 5",
     maxHeight: "800px",
     gridColumn: "3 / 4"
 }
@@ -92,13 +108,45 @@ const newEventsStyle = {
 const pageStyle = {
     display: "grid",
     gridTemplateColumns: "330px 500px 330px",
-    gridTemplateRows: " 800px, 800px",
+    gridTemplateRows: " 800px, 800px, 800px, 800px",
     gap: "50px",
-    padding: "100px 50px 50px 50px"
+    padding: "50px 50px 50px 50px"
 }
 
 const centerPage = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+}
+
+const premadeEventsStyle = {
+    gridRow: "1 / 2",
+    gridColumn: "1 / 2",
+    fontSize: "30px",
+    fontFamily: "Oswald, sans-serif",
+    textAlign: "center"
+}
+
+const newEventsTextStyle = {
+    gridRow: "1 / 2",
+    gridColumn: "3 / 4",
+    fontSize: "30px",
+    fontFamily: "Oswald, sans-serif",
+    textAlign: "center"
+}
+
+const createEventStyle = {
+    gridRow: "1 / 2",
+    gridColumn: "2 / 3",
+    fontSize: "30px",
+    fontFamily: "Oswald, sans-serif",
+    textAlign: "center"
+}
+
+const createLevelStyle = {
+    gridRow: "3 / 4",
+    gridColumn: "2 / 3",
+    fontSize: "30px",
+    fontFamily: "Oswald, sans-serif",
+    textAlign: "center"
 }

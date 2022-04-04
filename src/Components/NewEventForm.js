@@ -51,6 +51,6 @@ function NewEventForm({ setAddedEvents }) {
 }
 
 const formStyle = {
-    gridRow: "1 / 2",
+    gridRow: "2 / 3",
     gridColumn: "2 / 3"
 }

@@ -74,6 +74,6 @@ function LevelInfoForm({ addedEvents }) {
 }
 
 const formStyle = {
-    gridRow: "2 / 3",
+    gridRow: "4 / 5",
     gridColumn: "2 / 3"
 }
