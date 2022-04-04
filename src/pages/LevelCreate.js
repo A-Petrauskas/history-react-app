@@ -20,24 +20,27 @@ function LevelCreate() {
     }, []);
 
     let onDragEnd = (result) => {
-        const { destination, source } = result;
+        const { destination, source, draggableId } = result;
 
         if (source.droppableId === "newEvents" && !destination) {
             addedEvents.splice(source.index, 1);
         }
-        else if (source.droppableId === "newEvents" && destination.droppableId !== "newEvents") {
-            addedEvents.splice(source.index, 1);
-        }
-        else if (!destination) {
-            return;
-        }
-        else if (destination.droppableId === source.droppableId && destination.index === source.index) {
+
+        if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }
 
-        const finish = reorder(addedEvents, source.index, destination.index)
+        if (destination.droppableId === source.droppableId) {
+            let finish = reorder(addedEvents, source.index, destination.index)
+            setAddedEvents(finish);
+            return;
+        }
+
+        let idNumber = parseInt(draggableId.match(/\d+$/));
+        let finish = addedEvents.slice();
+        finish.splice(destination.index, 0, allEvents[idNumber]);
+
         setAddedEvents(finish);
-
     }
 
     const reorder = (list, startIndex, endIndex) => {
