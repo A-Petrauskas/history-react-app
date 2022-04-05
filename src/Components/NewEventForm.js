@@ -18,11 +18,16 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
     }
 
     const handleSubmit = (event) => {
+        if (inputs.description === "" || inputs.date === "") {
+            return;
+        }
+
         event.preventDefault();
         if (!addedEvents.some(e => e.description === inputs.description
             && e.date === inputs.date)) {
 
             setAddedEvents(setEvents => [...setEvents, inputs]);
+            setInputs({ ...inputs, ...{ date: "", description: "" } })
         }
     }
 
