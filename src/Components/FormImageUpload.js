@@ -7,7 +7,7 @@ function FormImageUpload({ setInputs }) {
 
     useEffect(() => {
         if (!selectedFile) {
-            setInputs(values => ({ ...values, imageSrc: undefined }));
+            setInputs(values => ({ ...values, imageSrc: undefined, image: undefined }));
             return;
         }
 

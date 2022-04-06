@@ -27,6 +27,10 @@ function LevelCreate() {
             addedEvents.splice(source.index, 1);
         }
 
+        if (source.droppableId === "allEvents" && !destination) {
+            return;
+        }
+
         if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }

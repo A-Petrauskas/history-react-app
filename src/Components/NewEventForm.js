@@ -5,7 +5,7 @@ export default NewEventForm;
 
 function NewEventForm({ setAddedEvents, addedEvents }) {
     const [inputs, setInputs] = useState({
-        description: "",
+        description: undefined,
         date: undefined,
         imageSrc: undefined,
         image: undefined
@@ -24,13 +24,9 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
     }
 
     const handleSubmit = (event) => {
-        if (inputs.description === "" || inputs.date === "") {
-            return;
-        }
-
         event.preventDefault();
         if (!addedEvents.some(e => e.description === inputs.description
-            && e.date === inputs.date)) {
+            && e.date === inputs.date) && inputs.description && inputs.date) {
 
             setAddedEvents(setEvents => [...setEvents, inputs]);
             setInputs({ ...inputs, ...{ date: "", description: "" } })
