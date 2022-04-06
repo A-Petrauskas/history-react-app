@@ -21,7 +21,7 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
     return (
         <div>
             <Card style={levelCardStyle} bg={"#FEF2D7"}>
-                <Card.Img variant="top" src={imageSrc} />
+                <Card.Img variant="top" src={imageSrc} style={imageStyle} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
@@ -45,5 +45,18 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
 
 const levelCardStyle = {
     fontFamily: "Oswald, sans-serif",
-    width: '18rem'
+    width: '310px',
+    borderRadius: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+}
+
+const imageStyle = {
+    width: "300px",
+    height: "200px",
+    objectFit: "cover",
+    pointerEvents: "none",
+    borderRadius: "8px",
+    paddingTop: "5px"
 }
