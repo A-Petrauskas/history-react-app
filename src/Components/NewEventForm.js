@@ -6,13 +6,19 @@ export default NewEventForm;
 function NewEventForm({ setAddedEvents, addedEvents }) {
     const [inputs, setInputs] = useState({
         description: "",
-        date: "",
-        imageSrc: undefined
+        date: undefined,
+        imageSrc: undefined,
+        image: undefined
     });
 
     const handleChange = (event) => {
         let name = event.target.name;
         let value = event.target.value;
+
+        // TODO: ITS PASS IT AS STRING HANDLE IT IN BACKEND
+        if (name === "date") {
+            value = parseInt(event.target.value);
+        }
 
         setInputs(values => ({ ...values, [name]: value }))
     }

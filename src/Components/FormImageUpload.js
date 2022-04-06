@@ -12,7 +12,7 @@ function FormImageUpload({ setInputs }) {
         }
 
         const objectUrl = URL.createObjectURL(selectedFile);
-        setInputs(values => ({ ...values, imageSrc: objectUrl }));
+        setInputs(values => ({ ...values, imageSrc: objectUrl, image: selectedFile }));
 
         return () => URL.revokeObjectURL(objectUrl);
     }, [selectedFile, setInputs])

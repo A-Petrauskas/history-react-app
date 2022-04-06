@@ -10,6 +10,7 @@ function LevelInfoForm({ addedEvents }) {
         timeConstraint: undefined,
         mistakes: undefined,
         imageSrc: undefined,
+        image: undefined,
         events: []
     });
 
@@ -21,13 +22,56 @@ function LevelInfoForm({ addedEvents }) {
         let name = event.target.name;
         let value = event.target.value;
 
+        if (name === "timeConstraint" || name === "mistakes") {
+            value = parseInt(event.target.value);
+        }
+
         setLevelInfo(values => ({ ...values, [name]: value }))
+    }
+
+    function postLevel() {
+        var formData = new FormData();
+
+        for (var key in levelInfo) {
+            if (key === "events") {
+                for (let i = 0; i < levelInfo[key].length; i++) {
+                    formData.append(
+                        `events[${i}].description`,
+                        levelInfo[key][i].description
+                    );
+
+                    formData.append(
+                        `events[${i}].date`,
+                        levelInfo[key][i].date
+                    );
+
+                    formData.append(
+                        `events[${i}].imageSrc`,
+                        levelInfo[key][i].imageSrc
+                    );
+
+                    formData.append(
+                        `events[${i}].image`,
+                        levelInfo[key][i].image
+                    );
+                }
+            }
+            else {
+                formData.append(key, levelInfo[key]);
+            }
+        }
+
+
+        return fetch(`http://localhost:5000/history/creation`, {
+            method: 'POST',
+            body: formData
+        })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(levelInfo);
-        //TODO: FETCH POST
+
+        postLevel();
     }
 
     return (
