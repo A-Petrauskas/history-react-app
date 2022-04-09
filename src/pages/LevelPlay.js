@@ -28,10 +28,8 @@ function LevelPlay() {
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
-    //track highscore
 
 
-    //CHANGE INTO SINGLE POST METHOD AND CHECK BY USER COOKIE
     useEffect(() => {
         fetch("http://localhost:5000/history/game", {
             method: 'POST',

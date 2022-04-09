@@ -4,6 +4,7 @@ import FormImageUpload from "./FormImageUpload";
 export default LevelInfoForm;
 
 function LevelInfoForm({ addedEvents }) {
+    const [createdLevel, setCreatedLevel] = useState();
     const [levelInfo, setLevelInfo] = useState({
         name: NaN,
         description: NaN,
@@ -29,7 +30,7 @@ function LevelInfoForm({ addedEvents }) {
         setLevelInfo(values => ({ ...values, [name]: value }))
     }
 
-    function postLevel() {
+    function CreateFormData() {
         var formData = new FormData();
 
         for (var key in levelInfo) {
@@ -69,10 +70,13 @@ function LevelInfoForm({ addedEvents }) {
             }
         }
 
+        return formData;
+    }
 
-        fetch(`http://localhost:5000/history/creation`, {
+    function postLevel() {
+        return fetch("http://localhost:5000/history/creation", {
             method: 'POST',
-            body: formData
+            body: CreateFormData()
         })
     }
 
@@ -81,8 +85,10 @@ function LevelInfoForm({ addedEvents }) {
 
         if (addedEvents.length >= 2 && levelInfo.description &&
             levelInfo.name && levelInfo.timeConstraint &&
-            levelInfo.mistakes && levelInfo.image) {
-            postLevel();
+            levelInfo.mistakes) { // && levelInfo.image
+            postLevel().then(() => {
+                console.log(createdLevel);
+            });
         }
     }
 
