@@ -8,7 +8,7 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
         description: undefined,
         date: undefined,
         imageSrc: undefined,
-        image: undefined
+        image: null
     });
 
     const handleChange = (event) => {

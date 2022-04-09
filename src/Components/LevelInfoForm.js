@@ -10,7 +10,7 @@ function LevelInfoForm({ addedEvents }) {
         timeConstraint: NaN,
         mistakes: NaN,
         imageSrc: undefined,
-        image: undefined,
+        image: null,
         events: []
     });
 
