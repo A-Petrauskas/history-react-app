@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import EventCardSmall from './EventCardSmall';
 
 export default LevelCreatedWindow
@@ -21,7 +22,9 @@ function LevelCreatedWindow({ createdLevel }) {
 
                 <div style={buttonsStyle}>
                     <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
-                    <Button variant="success" style={playButtonStyle}>Play Level</Button>{''}
+                    <Link to={`/level/${createdLevel.id}/play`}>
+                        <Button variant="success" style={playButtonStyle}>Play Level</Button>{''}
+                    </Link>
                     <Button variant="warning" style={CreateMoreButtonStyle} onClick={() => refreshPage()}>Create More</Button>{''}
                 </div>
             </div>
@@ -75,6 +78,7 @@ const CreateMoreButtonStyle = {
     gridColumn: "2 / 3",
     gridRow: "1 / 2",
     width: "150px",
+    height: "38px",
     justifySelf: "center"
 }
 
@@ -82,6 +86,7 @@ const viewButtonStyle = {
     gridColumn: "1 / 2",
     gridRow: "1 / 2",
     width: "150px",
+    height: "38px",
     justifySelf: "center"
 }
 
