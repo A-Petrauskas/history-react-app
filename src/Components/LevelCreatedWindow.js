@@ -9,6 +9,26 @@ function LevelCreatedWindow({ createdLevel }) {
         window.location.reload(false);
     }
 
+    if (createdLevel.status === 409) {
+        return (
+            <div style={dimBackground}>
+                <div style={boxStyle}>
+                    <b style={{ fontSize: "30px" }}> Your Level</b>
+
+                    <div style={{ marginTop: "20px" }}>
+                        <b style={borderLine}> Was Not Created! :(</b>
+                        <div style={{ marginTop: "20px" }}></div>
+                        <b style={borderLine}> Error: Duplicate was found</b>
+                    </div>
+
+                    <div style={buttonsStyle}>
+                        <Button variant="warning" style={CreateMoreButtonStyle} onClick={() => refreshPage()}>Create Again</Button>{''}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div style={dimBackground}>
             <div style={boxStyle}>
