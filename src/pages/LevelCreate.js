@@ -3,12 +3,14 @@ import { DragDropContext } from "react-beautiful-dnd";
 import React, { useEffect, useState } from 'react';
 import SmallEventCardList from "../Components/SmallEventCardList";
 import LevelInfoForm from "../Components/LevelInfoForm";
+import LevelCreatedWindow from "../Components/LevelCreatedWindow";
 
 export default LevelCreate;
 
 function LevelCreate() {
     const [addedEvents, setAddedEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
+    const [createdLevel, setCreatedLevel] = useState();
 
     useEffect(() => {
         fetch("http://localhost:5000/history/events")
@@ -66,6 +68,11 @@ function LevelCreate() {
 
     return (
         <div style={centerPage}>
+
+            {createdLevel &&
+                <LevelCreatedWindow createdLevel={createdLevel} />
+            }
+
             <div style={pageStyle}>
                 <div>
                     <NewEventForm setAddedEvents={setAddedEvents} addedEvents={addedEvents} />
@@ -101,7 +108,7 @@ function LevelCreate() {
                     </div>
                 </DragDropContext>
 
-                <LevelInfoForm addedEvents={addedEvents} />
+                <LevelInfoForm addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} />
             </div>
         </div>
     )
@@ -126,7 +133,7 @@ const pageStyle = {
     gridTemplateColumns: "400px 500px 400px",
     gridTemplateRows: " 50px 300px 50px 300px",
     gap: "50px",
-    padding: "50px 50px 50px 50px"
+    padding: "30px 50px 30px 50px"
 }
 
 const centerPage = {
