@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default LevelCard;
 
-function LevelCard({ name, mistakes, timeConstraint, description, eventCount, imageSrc, id }) {
+function LevelCard(props) {
 
     function secondsToMinutes(time) {
         let minutes = Math.floor(time / 60);
@@ -21,25 +21,31 @@ function LevelCard({ name, mistakes, timeConstraint, description, eventCount, im
     return (
         <div>
             <Card style={levelCardStyle} bg={"#FEF2D7"}>
-                <Card.Img variant="top" src={imageSrc} style={imageStyle} />
+                <Card.Img variant="top" src={props.imageSrc} style={imageStyle} />
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
+                    <Card.Title>{props.name}</Card.Title>
                     <Card.Text>
-                        {description}
+                        {props.description}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>Events in level: {eventCount}</ListGroupItem>
-                    <ListGroupItem>Allowed mistakes: {mistakes}</ListGroupItem>
-                    <ListGroupItem>Time constraint: {secondsToMinutes(timeConstraint)}</ListGroupItem>
+                    <ListGroupItem>Events in level: {props.eventCount}</ListGroupItem>
+                    <ListGroupItem>Allowed mistakes: {props.mistakes}</ListGroupItem>
+                    <ListGroupItem>Time constraint: {secondsToMinutes(props.timeConstraint)}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to={`/level/${id}/play`}>
-                        <Button variant="primary">PLAY</Button>{''}
-                    </Link>
+                    <div style={buttonsStyle}>
+                        <Link to={`/level/${props.id}/play`}>
+                            <Button variant="primary">PLAY</Button>{''}
+                        </Link>
+
+                        <Link to={`/level/${props.id}/view`} state={props}>
+                            <Button variant="primary">VIEW</Button>{''}
+                        </Link>
+                    </div>
                 </Card.Body>
             </Card>
-        </div>
+        </div >
     )
 }
 
@@ -59,4 +65,9 @@ const imageStyle = {
     pointerEvents: "none",
     borderRadius: "8px",
     paddingTop: "5px"
+}
+
+const buttonsStyle = {
+    display: "flex",
+    columnGap: "70px"
 }

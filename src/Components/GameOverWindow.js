@@ -30,15 +30,15 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
             <div className='row' style={boxStyle}>
 
                 {gameStatus === 2 &&
-                    <b style={borderLine}>GAME OVER</b>
+                    <b style={borderLine}> <div style={{ fontSize: "30px" }}>GAME OVER</div></b>
                 }
 
                 {gameStatus === 1 &&
-                    <b style={borderLine}>YOU HAVE WON!</b>
+                    <b style={borderLine}> <div style={{ fontSize: "30px" }}>YOU HAVE WON!</div></b>
                 }
 
                 <div>
-                    <b style={borderLine}> Your score was: {score}</b>
+                    <b style={borderLine}> <div style={{ fontSize: "20px" }}>Your score was: </div>{score}</b>
                 </div>
                 {
                     stats?.mistakes !== 0 &&
@@ -46,17 +46,20 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
                         <b> You made {stats?.mistakes} mistakes when placing these events:</b>
 
                         {stats?.mistakenEvents?.map((event, i) => (
-                            <div key={'mistakeEvent-' + i}>
+                            <div key={'mistakeEvent-' + i} style={{ marginLeft: "20px", marginRight: "20px" }}>
                                 <EventCardSmall {...event} />
                             </div>
                         ))}
                     </div>
                 }
 
+                <div style={buttonsStyle}>
+                    <Link to={`/level/${levelId}/view`}>
+                        <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
+                    </Link>
 
-                <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
-                <Button variant="success" style={playButtonStyle} onClick={() => refreshPage()}>Play Again</Button>{''}
-
+                    <Button variant="success" style={playButtonStyle} onClick={() => refreshPage()}>Play Again</Button>{''}
+                </div>
             </div>
         </div>
 
@@ -83,7 +86,8 @@ const boxStyle = {
     textAlign: "center",
     color: "black",
     fontSize: "large",
-    background: "#EDC7B7"
+    background: "#EDC7B7",
+    maxWidth: "830px"
 }
 
 const borderLine = {
@@ -93,14 +97,25 @@ const borderLine = {
 }
 
 const playButtonStyle = {
-    width: "33%",
-    height: "50px",
-    right: "0",
-    bottom: "0",
-    position: "absolute"
+    gridColumn: "3 / 4",
+    gridRow: "1 / 2",
+    width: "150px",
+    height: "38px",
+    justifySelf: "center"
 }
 
 const viewButtonStyle = {
-    width: "33%",
-    height: "50px"
+    gridColumn: "1 / 2",
+    gridRow: "1 / 2",
+    width: "150px",
+    height: "38px",
+    justifySelf: "center"
+}
+
+const buttonsStyle = {
+    marginTop: "30px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    gridTemplateRows: "55px",
+    width: "100%"
 }

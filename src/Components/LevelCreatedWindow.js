@@ -41,10 +41,14 @@ function LevelCreatedWindow({ createdLevel }) {
                 <b style={borderLine}> Was successfully created!</b>
 
                 <div style={buttonsStyle}>
-                    <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
+                    <Link to={`/level/${createdLevel.id}/view`} state={createdLevel}>
+                        <Button variant="primary" style={viewButtonStyle}>View Level</Button>{''}
+                    </Link>
+
                     <Link to={`/level/${createdLevel.id}/play`}>
                         <Button variant="success" style={playButtonStyle}>Play Level</Button>{''}
                     </Link>
+
                     <Button variant="warning" style={CreateMoreButtonStyle} onClick={() => refreshPage()}>Create More</Button>{''}
                 </div>
             </div>
