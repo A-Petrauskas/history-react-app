@@ -57,6 +57,7 @@ const getEventStyle = (draggableStyle) => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "8px",
+    textAlign: "center",
 
     ...draggableStyle
 });

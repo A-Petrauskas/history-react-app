@@ -41,5 +41,9 @@ const cardStyle = {
     flexDirection: "row",
     background: "#EEE2DC",
     fontWeight: "bold",
-    borderRadius: "8px"
+    borderRadius: "8px",
+    textAlign: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 }
