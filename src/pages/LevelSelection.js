@@ -1,4 +1,5 @@
 import LevelList from "../Components/LevelList";
+import NavigationButton from "../Components/NavigationButton";
 
 
 export default LevelSelection;
@@ -6,7 +7,10 @@ export default LevelSelection;
 function LevelSelection() {
     return (
         <div style={textStyle}>
-            <h1>Test Your Knowledge!</h1>
+            <h1 style={{ marginTop: "20px" }}>Test Your Knowledge!</h1>
+
+            <NavigationButton destination={"Create"} />
+
             <LevelList />
         </div>
     )
@@ -14,5 +18,5 @@ function LevelSelection() {
 
 const textStyle = {
     textAlign: "center",
-    fontFamily: "Oswald, sans-serif"
+    fontFamily: "Arial, sans-serif"
 }

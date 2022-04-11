@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import SmallEventCardList from "../Components/SmallEventCardList";
 import LevelInfoForm from "../Components/LevelInfoForm";
 import LevelCreatedWindow from "../Components/LevelCreatedWindow";
+import NavigationButton from "../Components/NavigationButton";
 
 export default LevelCreate;
 
@@ -68,6 +69,7 @@ function LevelCreate() {
 
     return (
         <div style={centerPage}>
+            <NavigationButton destination={"Menu"} />
 
             {createdLevel &&
                 <LevelCreatedWindow createdLevel={createdLevel} />

@@ -7,6 +7,7 @@ import GameOverWindow from "../Components/GameOverWindow";
 import LivesInfo from '../Components/LivesInfo';
 import ScoreInfo from '../Components/ScoreInfo';
 import TimeInfo from '../Components/TimeInfo';
+import NavigationButton from '../Components/NavigationButton';
 
 
 export default LevelPlay;
@@ -122,6 +123,10 @@ function LevelPlay() {
 
     return (
         <div>
+            <div style={navButtonStyle}>
+                <NavigationButton destination={"Menu"} gameOver={gameOver.current} />
+            </div>
+
             {gameOver.current &&
                 <GameOverWindow gameId={gameId} gameStatus={gameStatus.current} score={score.current} levelId={levelId.id} />
             }
@@ -178,4 +183,13 @@ const livesAndTimeStyle = {
     top: "10%",
     right: "10%",
     minWidth: "120px"
+}
+
+const navButtonStyle = {
+    zIndex: "10001",
+    width: "160px",
+    height: "95px",
+    position: "absolute",
+    top: "1%",
+    left: "1%"
 }

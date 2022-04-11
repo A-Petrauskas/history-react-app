@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import EventCardSmall from "../Components/EventCardSmall";
+import NavigationButton from "../Components/NavigationButton";
 
 
 export default LevelView
@@ -43,6 +44,8 @@ function LevelView() {
 
     return (
         <div>
+            <NavigationButton destination={"Menu"} />
+
             <div style={levelInfoStyle}>
                 <div style={levelTitle}>
                     {level?.name}
