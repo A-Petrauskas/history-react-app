@@ -38,13 +38,22 @@ function LevelView() {
 
 
     function setMistakes(mistakes) {
+        if (mistakes === 0) {
+            return "✖";
+        }
+
         return "✖ \t".repeat(mistakes);
     }
 
 
     return (
         <div>
-            <NavigationButton destination={"Menu"} />
+            <div style={{
+                position: "fixed", top: "1%",
+                left: "1%",
+            }}>
+                <NavigationButton destination={"Menu"} />
+            </div>
 
             <div style={levelInfoStyle}>
                 <div style={levelTitle}>
