@@ -15,11 +15,6 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
         let name = event.target.name;
         let value = event.target.value;
 
-        // TODO: ITS PASS IT AS STRING HANDLE IT IN BACKEND
-        if (name === "date") {
-            value = parseInt(event.target.value);
-        }
-
         setInputs(values => ({ ...values, [name]: value }))
     }
 
