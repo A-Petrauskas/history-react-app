@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import EventCardSmall from "../Components/EventCardSmall";
 import NavigationButton from "../Components/NavigationButton";
+import { Button } from 'react-bootstrap';
 
 
 export default LevelView
@@ -73,6 +74,12 @@ function LevelView() {
 
                     </div>
                 </div>
+
+                <div style={playButtonPosStyle}>
+                    <Link to={`/level/${levelId.id}/play`}>
+                        <Button variant="outline-secondary" style={playButtonStyle}>PLAY</Button>{''}
+                    </Link>
+                </div>
             </div>
 
             <div style={eventListStyle}>
@@ -127,7 +134,7 @@ const levelMistakesTime = {
 const levelInfoStyle = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    gridTemplateRows: "60px 100px 50px",
+    gridTemplateRows: "60px 100px 50px 100px",
     position: "fixed",
     rowGap: "50px",
     top: "12%",
@@ -141,4 +148,19 @@ const mistakesStyle = {
 
 const timeStyle = {
     gridColumn: "2 / 3",
+}
+
+const playButtonStyle = {
+    width: "200px",
+    height: "80px",
+    color: "black",
+    fontSize: "20px",
+    boxShadow: "0px 15px 20px rgba(0, 0, 0, 0.2)"
+}
+
+const playButtonPosStyle = {
+    gridColumn: "1 / 3",
+    gridRow: "4 / 5",
+    justifySelf: "center",
+    marginTop: "20px"
 }

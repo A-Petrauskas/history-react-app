@@ -18,5 +18,5 @@ function LevelSelection() {
 
 const textStyle = {
     textAlign: "center",
-    fontFamily: "Arial, sans-serif"
+    fontFamily: "Oswald, sans-serif"
 }

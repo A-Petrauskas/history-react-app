@@ -38,7 +38,9 @@ const navButtonStyle = {
     height: "85px",
     fontSize: "30px",
     boxShadow: "0px 15px 20px rgba(0, 0, 0, 0.2)",
-    zIndex: "10002"
+    zIndex: "10002",
+    fontFamily: "Oswald, sans-serif",
+    color: "#303030"
 }
 
 const navButtonGameOverStyle = {
@@ -51,5 +53,6 @@ const navButtonGameOverStyle = {
     boxShadow: "0px 15px 20px rgba(0, 0, 0, 0.2)",
     zIndex: "10002",
     background: "#EEE2DC",
-    color: "black"
+    color: "#303030",
+    fontFamily: "Oswald, sans-serif"
 }
