@@ -1,9 +1,10 @@
 import { useState } from "react";
+import DateTypeButton from "./DateTypeButton";
 import FormImageUpload from "./FormImageUpload";
 
 export default NewEventForm;
 
-function NewEventForm({ setAddedEvents, addedEvents }) {
+function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded }) {
     const [inputs, setInputs] = useState({
         description: undefined,
         date: undefined,
@@ -52,18 +53,22 @@ function NewEventForm({ setAddedEvents, addedEvents }) {
                             gridColumn: "2 / 3",
                             resize: "none"
                         }} />
+                    <div style={{
+                        gridRow: "2 / 3",
+                        gridColumn: "2 / 3",
+                        placeSelf: "center"
+                    }}>
+                        <DateTypeButton setFullDates={setFullDates} eventAdded={eventAdded} />
 
-                    <input
-                        type="number"
-                        placeholder="Date of Event"
-                        name="date"
-                        value={inputs.date || ""}
-                        onChange={handleChange}
-                        style={{
-                            gridRow: "2 / 3",
-                            gridColumn: "2 / 3",
-                            placeSelf: "center"
-                        }} />
+                        <input
+                            type="text"
+                            placeholder="Date of Event"
+                            name="date"
+                            value={inputs.date || ""}
+                            onChange={handleChange}
+                        />
+                    </div>
+
 
                     <div>
                     </div>
@@ -125,6 +130,6 @@ const formInputsGrid = {
     gridColumn: "1 / 3",
     display: "grid",
     gridTemplateColumns: "250px 200px",
-    gridTemplateRows: " 100px 100px 100px",
+    gridTemplateRows: " 100px 110px 50px",
     gap: "5px",
 }

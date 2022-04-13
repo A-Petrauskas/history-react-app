@@ -3,7 +3,7 @@ import FormImageUpload from "./FormImageUpload";
 
 export default LevelInfoForm;
 
-function LevelInfoForm({ addedEvents, setCreatedLevel }) {
+function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
     const [levelInfo, setLevelInfo] = useState({
         name: NaN,
         description: NaN,
@@ -11,12 +11,17 @@ function LevelInfoForm({ addedEvents, setCreatedLevel }) {
         mistakes: NaN,
         imageSrc: undefined,
         image: null,
+        fullDates: false,
         events: []
     });
 
     useEffect(() => {
         setLevelInfo(values => ({ ...values, events: addedEvents }))
     }, [addedEvents]);
+
+    useEffect(() => {
+        setLevelInfo(values => ({ ...values, fullDates: fullDates }))
+    }, [fullDates]);
 
     const handleChange = (event) => {
         let name = event.target.name;

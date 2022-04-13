@@ -12,6 +12,8 @@ function LevelCreate() {
     const [addedEvents, setAddedEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
     const [createdLevel, setCreatedLevel] = useState();
+    const [fullDates, setFullDates] = useState(false);
+    const [eventAdded, setEventAdded] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:5000/history/events")
@@ -28,6 +30,9 @@ function LevelCreate() {
 
         if (source.droppableId === "newEvents" && !destination) {
             addedEvents.splice(source.index, 1);
+            if (addedEvents.length === 0) {
+                setEventAdded(false);
+            }
         }
 
         if (source.droppableId === "allEvents" && !destination) {
@@ -41,6 +46,7 @@ function LevelCreate() {
         if (destination.droppableId === source.droppableId) {
             let finish = reorder(addedEvents, source.index, destination.index)
             setAddedEvents(finish);
+            setEventAdded(true);
             return;
         }
 
@@ -56,6 +62,7 @@ function LevelCreate() {
         finish.splice(destination.index, 0, allEvents[idNumber]);
 
         setAddedEvents(finish);
+        setEventAdded(true);
     }
 
 
@@ -77,7 +84,10 @@ function LevelCreate() {
 
             <div style={pageStyle}>
                 <div>
-                    <NewEventForm setAddedEvents={setAddedEvents} addedEvents={addedEvents} />
+                    <NewEventForm setAddedEvents={setAddedEvents}
+                        addedEvents={addedEvents}
+                        setFullDates={setFullDates}
+                        eventAdded={eventAdded} />
                 </div>
 
                 <div style={premadeEventsStyle}>
@@ -110,7 +120,7 @@ function LevelCreate() {
                     </div>
                 </DragDropContext>
 
-                <LevelInfoForm addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} />
+                <LevelInfoForm addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} fullDates={fullDates} />
             </div>
         </div>
     )
