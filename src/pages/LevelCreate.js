@@ -33,9 +33,10 @@ function LevelCreate() {
             if (addedEvents.length === 0) {
                 setEventAdded(false);
             }
+            return;
         }
 
-        if (source.droppableId === "allEvents" && !destination) {
+        if (!destination) {
             return;
         }
 
@@ -46,7 +47,6 @@ function LevelCreate() {
         if (destination.droppableId === source.droppableId) {
             let finish = reorder(addedEvents, source.index, destination.index)
             setAddedEvents(finish);
-            setEventAdded(true);
             return;
         }
 
@@ -57,12 +57,14 @@ function LevelCreate() {
             return;
         }
 
+        if ((fullDates && (allEvents[idNumber].date.match(new RegExp("-", "g")) || []).length === 2) ||
+            (!fullDates && (allEvents[idNumber].date.match(new RegExp("-", "g")) || []).length !== 2)) {
+            let finish = addedEvents.slice();
+            finish.splice(destination.index, 0, allEvents[idNumber]);
 
-        let finish = addedEvents.slice();
-        finish.splice(destination.index, 0, allEvents[idNumber]);
-
-        setAddedEvents(finish);
-        setEventAdded(true);
+            setAddedEvents(finish);
+            setEventAdded(true);
+        }
     }
 
 
