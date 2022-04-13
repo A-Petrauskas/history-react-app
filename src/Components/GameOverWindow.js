@@ -43,7 +43,13 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
                 {
                     stats?.mistakes !== 0 &&
                     <div style={{ marginTop: "40px" }}>
-                        <b> You made {stats?.mistakes} mistakes when placing these events:</b>
+                        {stats?.mistakes > 1 &&
+                            <b> You made {stats?.mistakes} mistakes when placing these events:</b>
+                        }
+
+                        {stats?.mistakes === 1 &&
+                            <b> You made {stats?.mistakes} mistake when placing this event:</b>
+                        }
 
                         {stats?.mistakenEvents?.map((event, i) => (
                             <div key={'mistakeEvent-' + i} style={{ marginLeft: "20px", marginRight: "20px" }}>
