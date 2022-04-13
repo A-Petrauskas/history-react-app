@@ -31,6 +31,6 @@ const addedEventsStyle = {
 
 const wrapper = {
     backgroundColor: "#EDC7B7",
-    height: "800px",
+    minHeight: "800px",
     width: "330px"
 }
