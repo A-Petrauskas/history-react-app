@@ -89,7 +89,9 @@ function LevelCreate() {
                     <NewEventForm setAddedEvents={setAddedEvents}
                         addedEvents={addedEvents}
                         setFullDates={setFullDates}
-                        eventAdded={eventAdded} />
+                        eventAdded={eventAdded}
+                        fullDates={fullDates}
+                        setEventAdded={setEventAdded} />
                 </div>
 
                 <div style={premadeEventsStyle}>

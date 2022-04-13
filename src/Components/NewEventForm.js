@@ -4,7 +4,7 @@ import FormImageUpload from "./FormImageUpload";
 
 export default NewEventForm;
 
-function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded }) {
+function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, fullDates, setEventAdded }) {
     const [inputs, setInputs] = useState({
         description: undefined,
         date: undefined,
@@ -24,8 +24,12 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded })
         if (!addedEvents.some(e => e.description === inputs.description
             && e.date === inputs.date) && inputs.description && inputs.date) {
 
-            setAddedEvents(setEvents => [...setEvents, inputs]);
-            setInputs({ ...inputs, ...{ date: "", description: "" } })
+            if ((fullDates && (inputs.date.match(new RegExp("-", "g")) || []).length === 2) ||
+                (!fullDates && (inputs.date.match(new RegExp("-", "g")) || []).length !== 2)) {
+                setAddedEvents(setEvents => [...setEvents, inputs]);
+                setEventAdded(true);
+                setInputs({ ...inputs, ...{ date: "", description: "" } })
+            }
         }
     }
 
@@ -62,7 +66,7 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded })
 
                         <input
                             type="text"
-                            placeholder="Date of Event"
+                            placeholder={fullDates ? "YYYY-MM-DD" : "YYYY (e.g., 395)"}
                             name="date"
                             value={inputs.date || ""}
                             onChange={handleChange}
