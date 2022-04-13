@@ -25,7 +25,7 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, f
             && e.date === inputs.date) && inputs.description && inputs.date) {
 
             if ((fullDates && /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/.test(inputs.date)) ||
-                ((!fullDates && /^[-]?\d{4}$/.test(inputs.date)))) {
+                ((!fullDates && /^\d{4}( BC)?$/.test(inputs.date)))) {
                 setAddedEvents(setEvents => [...setEvents, inputs]);
                 setEventAdded(true);
                 setInputs({ ...inputs, ...{ date: "", description: "" } })
@@ -66,7 +66,7 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, f
 
                         <input
                             type="text"
-                            placeholder={fullDates ? "YYYY-MM-DD" : "(-)YYYY (e.g., 0395)"}
+                            placeholder={fullDates ? "YYYY-MM-DD" : "YYYY (BC)"}
                             name="date"
                             value={inputs.date || ""}
                             onChange={handleChange}
