@@ -65,6 +65,9 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                     }
                 }
             }
+            else if (key === "timeConstraint") {
+                formData.append(key, convertTime(levelInfo[key]))
+            }
             else {
                 formData.append(key, levelInfo[key]);
             }
@@ -85,12 +88,25 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
             })
     }
 
+    function convertTime(timeMinutes) {
+        let minutes = parseInt(timeMinutes.substring(0, 2));
+        let seconds = parseInt(timeMinutes.substring(3, 5));
+
+        let timeSeconds = (minutes * 60 + seconds).toString();
+
+        return timeSeconds;
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (addedEvents.length >= 2 && levelInfo.description &&
             levelInfo.name && levelInfo.timeConstraint &&
-            levelInfo.mistakes) { // && levelInfo.image
+            levelInfo.mistakes && levelInfo.image
+            && /^\d{2}:\d{2}$/.test(levelInfo.timeConstraint)) {
+
+
+
             postLevel();
         }
     }
@@ -131,8 +147,8 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                         }} />
 
                     <input
-                        type="number"
-                        placeholder="Time Constraint"
+                        type="text"
+                        placeholder="Time Constraint (min:sec)"
                         name="timeConstraint"
                         value={levelInfo.timeConstraint || ""}
                         onChange={handleChange}
@@ -143,7 +159,7 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
 
                     <input
                         type="number"
-                        placeholder="Allowed number of mistakes"
+                        placeholder="Number of mistakes"
                         name="mistakes"
                         value={levelInfo.mistakes || ""}
                         onChange={handleChange}
