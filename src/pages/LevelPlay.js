@@ -49,7 +49,7 @@ function LevelPlay() {
 
 
     function fetchNextEvent(pIndex) {
-        return fetch(`http://localhost:5000/game/${gameId}`, {
+        return fetch(`http://localhost:5000/game/${gameId}/guess`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
