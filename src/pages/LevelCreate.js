@@ -16,7 +16,7 @@ function LevelCreate() {
     const [eventAdded, setEventAdded] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/history/events")
+        fetch("http://localhost:5000/events")
             .then(response => response.json())
             .then(events => {
                 setAllEvents(events);

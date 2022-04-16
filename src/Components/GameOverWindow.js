@@ -14,7 +14,7 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
     }, [])
 
     function fetchStats() {
-        return fetch(`http://localhost:5000/history/game/${gameId}/gameover`)
+        return fetch(`http://localhost:5000/game/${gameId}/gameover`)
             .then(response => response.json())
             .then(stats => {
                 setStats(stats);

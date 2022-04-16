@@ -77,7 +77,7 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
     }
 
     function postLevel() {
-        fetch("http://localhost:5000/history/creation", {
+        fetch("http://localhost:5000/creation", {
             method: 'POST',
             body: CreateFormData()
         })

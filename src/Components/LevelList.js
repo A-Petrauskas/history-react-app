@@ -9,7 +9,7 @@ function LevelList() {
     const [levels, setLevels] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/history/levels")
+        fetch("http://localhost:5000/levels")
             .then(response => response.json())
             .then(levels => {
                 setLevels(levels);

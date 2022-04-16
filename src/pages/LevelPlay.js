@@ -32,7 +32,7 @@ function LevelPlay() {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/history/game", {
+        fetch("http://localhost:5000/game", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function LevelPlay() {
 
 
     function fetchNextEvent(pIndex) {
-        return fetch(`http://localhost:5000/history/game/${gameId}`, {
+        return fetch(`http://localhost:5000/game/${gameId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

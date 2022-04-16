@@ -27,7 +27,7 @@ function LevelView() {
 
     useEffect(() => {
         if (!location.state) {
-            fetch(`http://localhost:5000/history/levels/id/${levelId.id}`)
+            fetch(`http://localhost:5000/levels/id/${levelId.id}`)
                 .then(response => response.json())
                 .then(level => setLevel(level))
         }
