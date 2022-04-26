@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LevelCard from './LevelCard'
+import LevelCard from '../Stateless/LevelCard'
 
 export default LevelList;
 

@@ -1,5 +1,5 @@
-import LevelList from "../Components/LevelList";
-import NavigationButton from "../Components/NavigationButton";
+import LevelList from "../Components/Stateful/LevelList";
+import NavigationButton from "../Components/Stateless/NavigationButton";
 
 
 export default LevelSelection;

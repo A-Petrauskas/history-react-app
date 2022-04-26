@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from "react-router-dom";
-import EventList from "../Components/EventList"
-import EventCard from "../Components/EventCard";
+import EventList from "../Components/Stateless/EventList"
+import EventCard from "../Components/Stateless/EventCard";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import GameOverWindow from "../Components/GameOverWindow";
-import LivesInfo from '../Components/LivesInfo';
-import ScoreInfo from '../Components/ScoreInfo';
-import TimeInfo from '../Components/TimeInfo';
-import NavigationButton from '../Components/NavigationButton';
+import GameOverWindow from "../Components/Stateful/GameOverWindow";
+import LivesInfo from '../Components/Stateful/LivesInfo';
+import ScoreInfo from '../Components/Stateless/ScoreInfo';
+import TimeInfo from '../Components/Stateful/TimeInfo';
+import NavigationButton from '../Components/Stateless/NavigationButton';
 
 
 export default LevelPlay;

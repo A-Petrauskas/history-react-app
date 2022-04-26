@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import EventCardSmall from "../Components/EventCardSmall";
-import NavigationButton from "../Components/NavigationButton";
+import EventCardSmall from "../Components/Stateless/EventCardSmall";
+import NavigationButton from "../Components/Stateless/NavigationButton";
 import { Button } from 'react-bootstrap';
 
 

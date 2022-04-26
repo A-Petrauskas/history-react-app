@@ -1,10 +1,10 @@
-import NewEventForm from "../Components/NewEventForm";
+import NewEventForm from "../Components/Stateful/NewEventForm";
 import { DragDropContext } from "react-beautiful-dnd";
 import React, { useEffect, useState } from 'react';
-import SmallEventCardList from "../Components/SmallEventCardList";
-import LevelInfoForm from "../Components/LevelInfoForm";
-import LevelCreatedWindow from "../Components/LevelCreatedWindow";
-import NavigationButton from "../Components/NavigationButton";
+import SmallEventCardList from "../Components/Stateless/SmallEventCardList";
+import LevelInfoForm from "../Components/Stateful/LevelInfoForm";
+import LevelCreatedWindow from "../Components/Stateless/LevelCreatedWindow";
+import NavigationButton from "../Components/Stateless/NavigationButton";
 
 export default LevelCreate;
 

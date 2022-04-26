@@ -1,7 +1,7 @@
 import React from "react";
 import EventCard from './EventCard'
 import { Droppable } from "react-beautiful-dnd";
-import TimelineArrow from '../Components/TimelineArrow';
+import TimelineArrow from './TimelineArrow';
 
 export default EventList;
 
