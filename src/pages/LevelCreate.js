@@ -81,6 +81,10 @@ function LevelCreate() {
             <NavigationButton destination={"Menu"} />
 
             {createdLevel &&
+                <NavigationButton destination={"Menu"} gameOver={true} />
+            }
+
+            {createdLevel &&
                 <LevelCreatedWindow createdLevel={createdLevel} />
             }
 
