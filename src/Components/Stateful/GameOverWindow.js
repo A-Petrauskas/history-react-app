@@ -38,7 +38,7 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
                 }
 
                 <div>
-                    <b style={borderLine}> <div style={{ fontSize: "20px" }}>Your score was: </div>{score}</b>
+                    <b style={borderLine}> <div style={{ fontSize: "20px" }}>Your score was: </div><div style={{ fontSize: "30px" }}>{score}</div></b>
                 </div>
                 {
                     stats?.mistakes !== 0 &&
