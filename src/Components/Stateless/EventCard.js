@@ -61,14 +61,15 @@ const imageStyle = {
     height: "200px",
     objectFit: "cover",
     pointerEvents: "none",
-    borderRadius: "4px"
+    borderRadius: "6px",
+    paddingTop: "2px"
 }
 
 const getEventStyle = (draggableStyle) => ({
     userSelect: "none",
     margin: `0 20px 0 0`,
     maxWidth: "300px",
-    minWidth: "201px",
+    minWidth: "204px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -97,5 +98,6 @@ const imageStyle2 = {
     height: "150px",
     objectFit: "cover",
     pointerEvents: "none",
-    borderRadius: "4px"
+    borderRadius: "6px",
+    paddingTop: "2px"
 }
