@@ -118,7 +118,7 @@ const levelDescription = {
     gridColumn: "1 / 3",
     gridRow: "2 / 3",
     justifySelf: "center",
-    maxWidth: "85%"
+    maxWidth: "70%"
 }
 
 const levelMistakesTime = {

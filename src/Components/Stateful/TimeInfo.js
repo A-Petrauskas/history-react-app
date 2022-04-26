@@ -63,7 +63,7 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
 
 const timeStyle = {
     textShadow: "2px 2px 1px grey",
-    fontSize: "50px",
+    fontSize: "40px",
     fontFamily: "Oswald, sans-serif",
     marginTop: "30px",
     textAlign: "center"
