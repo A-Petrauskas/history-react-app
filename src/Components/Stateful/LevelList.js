@@ -48,7 +48,7 @@ const wrapper = {
     flexWrap: "wrap",
     padding: "10px",
     justifyContent: "center",
-    top: "30%",
+    top: "25%",
     paddingTop: "20px",
     width: "73%",
     backgroundColor: "#E4D1C8"
