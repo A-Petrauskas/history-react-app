@@ -51,5 +51,5 @@ const wrapper = {
     top: "30%",
     paddingTop: "20px",
     width: "73%",
-    backgroundColor: "#EBDDD6"
+    backgroundColor: "#E4D1C8"
 }
