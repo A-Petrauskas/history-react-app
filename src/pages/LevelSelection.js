@@ -20,7 +20,7 @@ function LevelSelection() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                }}> Click Play to test yourself on the topic or explore them by clicking Learn</h2>
+                }}> Click Play to test yourself on the topic or explore it by clicking Learn</h2>
             </div>
 
             <LevelList />

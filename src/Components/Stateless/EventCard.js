@@ -83,11 +83,11 @@ const getEventStyle2 = (draggableStyle) => ({
     userSelect: "none",
     margin: `0 20px 0 0`,
     maxWidth: "200px",
-    minWidth: "162px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "10px",
+    minWidth: "200px",
 
 
     ...draggableStyle

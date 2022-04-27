@@ -28,7 +28,7 @@ const imageStyle = {
 }
 
 const cardSeparation = {
-    padding: "12px",
+    padding: "10px",
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",

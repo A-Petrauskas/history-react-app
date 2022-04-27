@@ -30,8 +30,9 @@ function EventList({ placedEvents, direction, dragDisabled }) {
 const wrapper = {
     padding: "50px",
     backgroundColor: "#EDC7B7",
-    overflowX: "auto",
-    display: "flex"
+    overflowX: "hidden",
+    display: "flex",
+    maxHeight: "350px"
 }
 
 const placedEventsStyle = {
