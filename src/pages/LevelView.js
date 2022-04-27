@@ -67,10 +67,37 @@ function LevelView() {
 
                 <div style={levelMistakesTime}>
                     <div style={mistakesStyle}>
-                        {level && setMistakes(level.mistakes)}
+                        <div style={{
+                            marginBottom: "5px", fontSize: "25px", display: "flex",
+                            justifyContent: "center"
+                        }}>
+                            Mistakes Allowed: <br></br>
+                        </div>
+
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            fontSize: "35px"
+                        }}>
+                            {level && setMistakes(level.mistakes)}
+                        </div>
                     </div>
-                    {secondsToMinutes(level?.timeConstraint)}
+
                     <div style={timeStyle}>
+                        <div style={{
+                            marginBottom: "5px", fontSize: "25px", display: "flex",
+                            justifyContent: "center"
+                        }}>
+                            Time Constraint: <br></br>
+                        </div>
+
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            fontSize: "30px"
+                        }}>
+                            {secondsToMinutes(level?.timeConstraint)}
+                        </div>
 
                     </div>
                 </div>
@@ -99,7 +126,7 @@ const eventListStyle = {
     minWidth: "550px",
     backgroundColor: "#EDC7B7",
     position: "absolute",
-    right: "12%",
+    right: "10%",
     marginTop: "20px"
 }
 
@@ -128,7 +155,8 @@ const levelMistakesTime = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     fontSize: "28px",
-    gap: "200px"
+    gap: "200px",
+    marginTop: "20px"
 }
 
 const levelInfoStyle = {
@@ -155,7 +183,8 @@ const playButtonStyle = {
     height: "80px",
     color: "black",
     fontSize: "20px",
-    boxShadow: "0px 15px 20px rgba(0, 0, 0, 0.2)"
+    boxShadow: "0px 15px 20px rgba(0, 0, 0, 0.2)",
+    marginTop: "70px"
 }
 
 const playButtonPosStyle = {
