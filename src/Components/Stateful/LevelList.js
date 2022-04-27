@@ -29,7 +29,7 @@ function LevelList() {
         return <div>Loading...</div>;
     } else {
         return (
-            <>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={wrapper}>
                     {levels.map((level, i) => (
                         <div key={'level-' + i} style={{ padding: "8px" }}>
@@ -37,15 +37,19 @@ function LevelList() {
                         </div>
                     ))}
                 </div>
-            </>
+            </div>
         );
     }
 }
 
 const wrapper = {
+    position: "absolute",
     display: "flex",
     flexWrap: "wrap",
     padding: "10px",
     justifyContent: "center",
-    paddingTop: "100px"
+    top: "30%",
+    paddingTop: "20px",
+    width: "73%",
+    backgroundColor: "#EBDDD6"
 }

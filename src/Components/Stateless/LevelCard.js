@@ -36,11 +36,11 @@ function LevelCard(props) {
                 <Card.Body>
                     <div style={buttonsStyle}>
                         <Link to={`/level/${props.id}/play`}>
-                            <Button variant="primary" style={buttonSizeStyle}>PLAY</Button>{''}
+                            <Button variant="primary" style={buttonPlayStyle}>Play</Button>{''}
                         </Link>
 
                         <Link to={`/level/${props.id}/view`} state={props}>
-                            <Button variant="secondary" style={buttonSizeStyle}>VIEW</Button>{''}
+                            <Button variant="secondary" style={buttonLearnStyle}>Learn</Button>{''}
                         </Link>
                     </div>
                 </Card.Body>
@@ -72,7 +72,16 @@ const buttonsStyle = {
     columnGap: "70px"
 }
 
-const buttonSizeStyle = {
+const buttonPlayStyle = {
     width: "100px",
-    height: "38px"
+    height: "38px",
+    backgroundColor: "#5DA399",
+    borderColor: "#5DA399"
+}
+
+const buttonLearnStyle = {
+    width: "100px",
+    height: "38px",
+    backgroundColor: "#B3B7D1",
+    borderColor: "#B3B7D1"
 }

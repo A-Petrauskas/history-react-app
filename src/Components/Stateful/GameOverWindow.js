@@ -38,7 +38,7 @@ function GameOverWindow({ gameId, gameStatus, score, levelId }) {
                 }
 
                 <div>
-                    <b style={borderLine}> <div style={{ fontSize: "20px" }}>Your score was: </div><div style={{ fontSize: "30px" }}>{score}</div></b>
+                    <b style={borderLine}> <div style={{ fontSize: "20px" }}>Your score was: </div><div style={{ fontSize: "30px", backgroundColor: "#E7B39D" }}>{score}</div></b>
                 </div>
                 {
                     stats?.mistakes !== 0 &&
@@ -107,7 +107,9 @@ const playButtonStyle = {
     gridRow: "1 / 2",
     width: "150px",
     height: "38px",
-    justifySelf: "center"
+    justifySelf: "center",
+    backgroundColor: "#5DA399",
+    borderColor: "#5DA399"
 }
 
 const viewButtonStyle = {
@@ -115,7 +117,9 @@ const viewButtonStyle = {
     gridRow: "1 / 2",
     width: "150px",
     height: "38px",
-    justifySelf: "center"
+    justifySelf: "center",
+    backgroundColor: "#8C92BA",
+    borderColor: "#B3B7D1"
 }
 
 const buttonsStyle = {
@@ -123,5 +127,7 @@ const buttonsStyle = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr 1fr",
     gridTemplateRows: "55px",
-    width: "100%"
+    width: "100%",
+    backgroundColor: "#E7B39D",
+    paddingTop: "20px"
 }

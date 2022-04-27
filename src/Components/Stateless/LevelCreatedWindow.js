@@ -95,7 +95,9 @@ const playButtonStyle = {
     gridColumn: "3 / 4",
     gridRow: "1 / 2",
     width: "150px",
-    justifySelf: "center"
+    justifySelf: "center",
+    backgroundColor: "#5DA399",
+    borderColor: "#5DA399"
 }
 
 const CreateMoreButtonStyle = {
@@ -103,7 +105,10 @@ const CreateMoreButtonStyle = {
     gridRow: "1 / 2",
     width: "150px",
     height: "38px",
-    justifySelf: "center"
+    justifySelf: "center",
+    backgroundColor: "#B3809A",
+    borderColor: "#B3809A",
+    color: "white"
 }
 
 const viewButtonStyle = {
@@ -111,7 +116,9 @@ const viewButtonStyle = {
     gridRow: "1 / 2",
     width: "150px",
     height: "38px",
-    justifySelf: "center"
+    justifySelf: "center",
+    backgroundColor: "#8C92BA",
+    borderColor: "#B3B7D1"
 }
 
 const buttonsStyle = {
@@ -120,5 +127,7 @@ const buttonsStyle = {
     gridTemplateRows: "55px",
     position: "absolute",
     bottom: "0",
-    width: "100%"
+    width: "100%",
+    backgroundColor: "#E7B39D",
+    paddingTop: "20px"
 }
