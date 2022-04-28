@@ -8,6 +8,7 @@ import LivesInfo from '../Components/Stateful/LivesInfo';
 import ScoreInfo from '../Components/Stateless/ScoreInfo';
 import TimeInfo from '../Components/Stateful/TimeInfo';
 import NavigationButton from '../Components/Stateless/NavigationButton';
+import TutorialOverlay from '../Components/Stateless/TutorialOverlay';
 
 
 export default LevelPlay;
@@ -124,11 +125,8 @@ function LevelPlay() {
 
     return (
         <div>
-            {!tutorialDone &&
-                <div style={dimBackground}>
-                    <div style={EventListRectStyle}></div>
-
-                </div>
+            {!tutorialDone && mistakesAllowed.current !== -1 &&
+                <TutorialOverlay setTutorialDone={setTutorialDone} />
             }
 
             <div style={navButtonStyle}>
@@ -182,7 +180,7 @@ const textStyle = {
 const newEventStyle = {
     display: "flex",
     justifyContent: "center",
-    padding: "50px",
+    paddingTop: "60px",
 }
 
 const livesAndTimeStyle = {
@@ -200,28 +198,4 @@ const navButtonStyle = {
     position: "absolute",
     top: "1%",
     left: "1%"
-}
-
-const dimBackground = {
-    background: "rgba(0, 0, 0, 0.7)",
-    width: "100%",
-    height: "100%",
-    zIndex: "1000",
-    position: "absolute",
-    padding: "8px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-}
-
-const EventListRectStyle = {
-    marginTop: "50px",
-    position: "fixed",
-    width: "100%",
-    top: "49%",
-    height: "45%",
-    borderStyle: "dashed",
-    borderColor: "#F3DACE",
-    borderWidth: "10px",
-    background: "rgba(243, 218, 206, 0.1)"
 }

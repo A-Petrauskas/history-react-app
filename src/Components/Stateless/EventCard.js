@@ -19,7 +19,7 @@ function EventCard({ name, description, imageSrc, id, index, dragDisabled }) {
                             <Card.Img variant="top" src={imageSrc} style={imageStyle2} />
                             <Card.Body>
 
-                                <Card.Title style={{ fontSize: "15px" }}>{description}</Card.Title>
+                                <Card.Title style={{ fontSize: "16px" }}>{description}</Card.Title>
                                 <Card.Text>
                                     {name}
                                 </Card.Text>
