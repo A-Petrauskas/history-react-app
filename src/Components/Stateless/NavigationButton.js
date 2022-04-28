@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default NavigationButton
 
-function NavigationButton({ destination, gameOver }) {
+function NavigationButton({ destination, gameOver, tutorialDone }) {
     var page = null;
 
     if (destination === "Menu") {
@@ -14,7 +14,7 @@ function NavigationButton({ destination, gameOver }) {
         page = `/create`
     }
 
-    if (gameOver) {
+    if (gameOver || !tutorialDone) {
         return (
             <Link to={page}>
                 <Button variant="outline-secondary" style={navButtonGameOverStyle}>{destination}</Button>{' '}

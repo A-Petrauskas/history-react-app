@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 
 export default TimeInfo
 
-function TimeInfo({ time, passTimeIsUp, gameOver }) {
+function TimeInfo({ time, passTimeIsUp, gameOver, tutorialDone }) {
     const timeSet = useRef(true);
     const timeIsUp = useRef(false);
     const [timerDone, SetTimerDone] = useState(false);
@@ -21,6 +21,10 @@ function TimeInfo({ time, passTimeIsUp, gameOver }) {
 
     useEffect(() => {
         let myInterval = setInterval(() => {
+            if (!tutorialDone) {
+                return;
+            }
+
             if (gameOver) {
                 SetTimerDone(true);
                 return;

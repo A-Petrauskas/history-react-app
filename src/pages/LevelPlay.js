@@ -29,6 +29,7 @@ function LevelPlay() {
     const [gameId, setGameId] = useState("");
     const [event, setEvent] = useState();
     const [placedEvents, setPlacedEvents] = useState([]);
+    const [tutorialDone, setTutorialDone] = useState(false);
 
 
     useEffect(() => {
@@ -123,8 +124,15 @@ function LevelPlay() {
 
     return (
         <div>
+            {!tutorialDone &&
+                <div style={dimBackground}>
+                    <div style={EventListRectStyle}></div>
+
+                </div>
+            }
+
             <div style={navButtonStyle}>
-                <NavigationButton destination={"Menu"} gameOver={gameOver.current} />
+                <NavigationButton destination={"Menu"} gameOver={gameOver.current} tutorialDone={tutorialDone} />
             </div>
 
             {gameOver.current &&
@@ -139,7 +147,7 @@ function LevelPlay() {
                 }
 
                 {timeConstraint.current !== -1 &&
-                    <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} gameOver={gameOver.current} />
+                    <TimeInfo time={timeConstraint.current} passTimeIsUp={SetTimeIsUp} gameOver={gameOver.current} tutorialDone={tutorialDone} />
                 }
             </div>
 
@@ -192,4 +200,28 @@ const navButtonStyle = {
     position: "absolute",
     top: "1%",
     left: "1%"
+}
+
+const dimBackground = {
+    background: "rgba(0, 0, 0, 0.7)",
+    width: "100%",
+    height: "100%",
+    zIndex: "1000",
+    position: "absolute",
+    padding: "8px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+}
+
+const EventListRectStyle = {
+    marginTop: "50px",
+    position: "fixed",
+    width: "100%",
+    top: "49%",
+    height: "45%",
+    borderStyle: "dashed",
+    borderColor: "#F3DACE",
+    borderWidth: "10px",
+    background: "rgba(243, 218, 206, 0.1)"
 }
