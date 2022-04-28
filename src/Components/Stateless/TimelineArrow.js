@@ -13,7 +13,7 @@ function TimelineArrow() {
 }
 
 const rightArrowTriangle = {
-    border: "solid #123C69",
+    border: "solid grey",
     borderWidth: "0 5px 5px 0",
     display: "inline-block",
     transform: "rotate(-45deg)",
@@ -25,7 +25,7 @@ const rightArrowTriangle = {
 
 const arrowLine = {
     width: "90%",
-    borderBottom: "3px solid #123C69",
+    borderBottom: "3px solid grey",
     display: "inline-block",
     marginBottom: "14px"
 }

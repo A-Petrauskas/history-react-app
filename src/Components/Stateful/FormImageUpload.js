@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Form } from "react-bootstrap";
 
 export default FormImageUpload;
 
@@ -28,7 +29,9 @@ function FormImageUpload({ setInputs }) {
 
     return (
         <div>
-            <input type='file' onChange={onSelectFile} />
-        </div>
+            <Form.Group controlId="formFile" className="mb-3" style={{ width: "200px" }} >
+                <Form.Control type="file" size="sm" onChange={onSelectFile} />
+            </Form.Group>
+        </div >
     )
 }

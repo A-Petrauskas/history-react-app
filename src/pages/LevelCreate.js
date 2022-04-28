@@ -5,6 +5,8 @@ import SmallEventCardList from "../Components/Stateless/SmallEventCardList";
 import LevelInfoForm from "../Components/Stateful/LevelInfoForm";
 import LevelCreatedWindow from "../Components/Stateless/LevelCreatedWindow";
 import NavigationButton from "../Components/Stateless/NavigationButton";
+import FinishLevelCreation from "../Components/Stateless/FinishLevelCreation";
+import { Button } from "react-bootstrap";
 
 export default LevelCreate;
 
@@ -14,6 +16,7 @@ function LevelCreate() {
     const [createdLevel, setCreatedLevel] = useState();
     const [fullDates, setFullDates] = useState(false);
     const [eventAdded, setEventAdded] = useState(false);
+    const [finishLevel, setFinishLevel] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:5000/events")
@@ -89,29 +92,46 @@ function LevelCreate() {
             }
 
             <div style={pageStyle}>
-                <div>
-                    <NewEventForm setAddedEvents={setAddedEvents}
-                        addedEvents={addedEvents}
-                        setFullDates={setFullDates}
-                        eventAdded={eventAdded}
-                        fullDates={fullDates}
-                        setEventAdded={setEventAdded} />
+                <div style={explanationStyle}>
+                    <div style={firstRowStyle}>
+                        Drag an event from the left column into the
+                    </div>
+
+                    <div style={secondRowStyle}>
+                        right column to add it to your new learning activity
+                    </div>
+
+                    <div style={arrowStyle}>
+                        <div style={arrowLine}></div>
+
+                        <div style={rightArrowTriangle}></div>
+                    </div>
+
+                    <div style={forthRowStyle}>
+                        Or
+                    </div>
+
+                    <div style={fifthRowStyle}>
+                        Create a brand new event below <br></br>
+                        and watch it appear on the right!
+                    </div>
+
+                    <div style={arrowDownStyle}></div>
                 </div>
+
+                <NewEventForm setAddedEvents={setAddedEvents}
+                    addedEvents={addedEvents}
+                    setFullDates={setFullDates}
+                    eventAdded={eventAdded}
+                    fullDates={fullDates}
+                    setEventAdded={setEventAdded} />
 
                 <div style={premadeEventsStyle}>
                     Events you could use:
                 </div>
 
                 <div style={newEventsTextStyle}>
-                    Events in your level:
-                </div>
-
-                <div style={createEventStyle}>
-                    Create a new Event:
-                </div>
-
-                <div style={createLevelStyle}>
-                    Finalise your level:
+                    Events in your learning activity:
                 </div>
 
                 <DragDropContext onDragEnd={onDragEnd}>
@@ -128,7 +148,18 @@ function LevelCreate() {
                     </div>
                 </DragDropContext>
 
-                <LevelInfoForm addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} fullDates={fullDates} />
+                <div style={finishButtonPos}>
+                    <Button variant="primary" style={finishButtonStyle} onClick={() => { if (addedEvents.length >= 2) setFinishLevel(true) }}>Finish Level</Button>{''}
+                </div>
+
+                <div style={finishLevelTextStyle}>
+                    Click here to finish creating
+                    your level  ➔
+                </div>
+
+                {finishLevel &&
+                    <FinishLevelCreation addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} fullDates={fullDates} />
+                }
             </div>
         </div>
     )
@@ -151,7 +182,7 @@ const newEventsStyle = {
 const pageStyle = {
     display: "grid",
     gridTemplateColumns: "400px 500px 400px",
-    gridTemplateRows: " 50px 300px 50px 300px",
+    gridTemplateRows: " 20px 250px 330px 60px",
     gap: "50px",
     padding: "30px 50px 30px 50px"
 }
@@ -179,18 +210,112 @@ const newEventsTextStyle = {
     textAlign: "center"
 }
 
-const createEventStyle = {
-    gridRow: "1 / 2",
+const explanationStyle = {
+    gridRow: "2 / 3",
     gridColumn: "2 / 3",
-    fontSize: "30px",
-    fontFamily: "Oswald, sans-serif",
-    textAlign: "center"
+    display: "grid",
+    gridTemplateColumns: "500px",
+    gridTemplateRows: " 30px 40px 20px 30px"
 }
 
-const createLevelStyle = {
-    gridRow: "3 / 4",
-    gridColumn: "2 / 3",
-    fontSize: "30px",
+const firstRowStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     fontFamily: "Oswald, sans-serif",
-    textAlign: "center"
+    fontSize: "25px",
+    gridColumn: "1 / 2",
+    gridRow: "1 / 2"
+}
+
+const secondRowStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Oswald, sans-serif",
+    fontSize: "25px",
+    gridColumn: "1/2",
+    gridRow: "2 / 3"
+}
+
+const forthRowStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Oswald, sans-serif",
+    fontSize: "25px",
+    gridColumn: "1/2",
+    gridRow: "4 / 5",
+    paddingTop: "80px"
+}
+
+const fifthRowStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Oswald, sans-serif",
+    fontSize: "25px",
+    gridColumn: "1/2",
+    gridRow: "5 / 6",
+    paddingTop: "70px"
+}
+
+const rightArrowTriangle = {
+    border: "solid grey",
+    borderWidth: "0 5px 5px 0",
+    display: "inline-block",
+    transform: "rotate(-45deg)",
+    WebkitTransform: "rotate(-45deg)",
+    height: "30px",
+    width: "30px",
+    marginTop: "10px"
+}
+
+const arrowLine = {
+    width: "92%",
+    borderBottom: "3px solid grey",
+    display: "inline-block",
+    marginBottom: "14px"
+}
+
+const arrowStyle = {
+    display: "block",
+    gridColumn: "1/2",
+    gridRow: "3 / 4",
+    paddingTop: "10px"
+}
+
+const arrowDownStyle = {
+    gridColumn: "1 / 2",
+    gridRow: "6 / 7",
+    placeSelf: "center",
+    border: "solid grey",
+    borderWidth: "0 5px 5px 0",
+    display: "inline-block",
+    transform: "rotate(45deg)",
+    WebkitTransform: "rotate(45deg)",
+    height: "30px",
+    width: "30px"
+}
+
+const finishButtonStyle = {
+    width: "220px",
+    height: "60px",
+    backgroundColor: "#5DA399",
+    borderColor: "#5DA399"
+}
+
+const finishButtonPos = {
+    gridRow: "4 / 5",
+    gridColumn: "2 / 3",
+    placeSelf: "end"
+}
+
+const finishLevelTextStyle = {
+    gridRow: "4 / 5",
+    gridColumn: "2 / 3",
+    placeSelf: "start",
+    fontFamily: "Oswald, sans-serif",
+    fontSize: "22px",
+    width: "270px"
 }

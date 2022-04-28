@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DateTypeButton from "./DateTypeButton";
 import FormImageUpload from "./FormImageUpload";
+import { Button } from 'react-bootstrap';
 
 export default NewEventForm;
 
@@ -78,18 +79,20 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, f
                     </div>
 
                     <div style={{
-                        gridRow: "3 / 4",
+                        gridRow: "2 / 3",
                         gridColumn: "1 / 2",
-                        alignSelf: "start"
+                        alignSelf: "end"
                     }}>
                         <FormImageUpload setInputs={setInputs} />
                     </div>
 
-                    <input type="submit" style={{
+                    <Button variant="secondary" type="submit" value={"Add Event"} style={{
                         gridRow: "3 / 4",
                         gridColumn: "2 / 3",
-                        placeSelf: "center"
-                    }} />
+                        placeSelf: "end",
+                        width: "200px"
+                    }}
+                    >Add Event ➔</Button>{' '}
                 </form>
             </div>
         </div>
@@ -97,8 +100,12 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, f
 }
 
 const formStyle = {
-    gridRow: "1 / 4",
-    gridColumn: "1 / 3"
+    gridRow: "3 / 4",
+    gridColumn: "2 / 3",
+    backgroundColor: "#EBDDD6",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 }
 
 const imageStyle = {
@@ -126,7 +133,7 @@ const formGrid = {
     display: "grid",
     gridTemplateColumns: "250px 200px",
     gridTemplateRows: " 100px 100px 100px",
-    gap: "5px",
+    gap: "5px"
 }
 
 const formInputsGrid = {
@@ -134,6 +141,6 @@ const formInputsGrid = {
     gridColumn: "1 / 3",
     display: "grid",
     gridTemplateColumns: "250px 200px",
-    gridTemplateRows: " 100px 110px 50px",
-    gap: "5px",
+    gridTemplateRows: " 140px 110px 50px",
+    gap: "5px"
 }

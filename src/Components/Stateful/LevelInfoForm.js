@@ -100,7 +100,7 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (addedEvents.length >= 2 && levelInfo.description &&
+        if (levelInfo.description &&
             levelInfo.name && levelInfo.timeConstraint &&
             levelInfo.mistakes && levelInfo.image
             && /^\d{2}:\d{2}$/.test(levelInfo.timeConstraint)) {
@@ -188,7 +188,7 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
 }
 
 const formStyle = {
-    gridRow: "4 / 5",
+    gridRow: "3 / 4",
     gridColumn: "2 / 3"
 }
 

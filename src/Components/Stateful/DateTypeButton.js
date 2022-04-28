@@ -22,7 +22,7 @@ function DateTypeButton({ setFullDates, eventAdded }) {
     ];
 
     return (
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: "10px", paddingTop: "10px" }}>
             <ButtonGroup>
                 {radios.map((radio, idx) => (
                     <ToggleButton
