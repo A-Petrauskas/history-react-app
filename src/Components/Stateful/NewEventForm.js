@@ -102,7 +102,7 @@ function NewEventForm({ setAddedEvents, addedEvents, setFullDates, eventAdded, f
 const formStyle = {
     gridRow: "3 / 4",
     gridColumn: "2 / 3",
-    backgroundColor: "#EBDDD6",
+    backgroundColor: "#E3D2C9",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

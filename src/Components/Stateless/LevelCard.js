@@ -36,11 +36,11 @@ function LevelCard(props) {
                 <Card.Body>
                     <div style={buttonsStyle}>
                         <Link to={`/level/${props.id}/play`}>
-                            <Button variant="primary" style={buttonPlayStyle}>Play</Button>{''}
+                            <Button variant="primary" style={buttonPlayStyle}>PLAY</Button>{''}
                         </Link>
 
                         <Link to={`/level/${props.id}/view`} state={props}>
-                            <Button variant="secondary" style={buttonLearnStyle}>Learn</Button>{''}
+                            <Button variant="secondary" style={buttonLearnStyle}>LEARN</Button>{''}
                         </Link>
                     </div>
                 </Card.Body>

@@ -2,7 +2,6 @@ import NewEventForm from "../Components/Stateful/NewEventForm";
 import { DragDropContext } from "react-beautiful-dnd";
 import React, { useEffect, useState } from 'react';
 import SmallEventCardList from "../Components/Stateless/SmallEventCardList";
-import LevelInfoForm from "../Components/Stateful/LevelInfoForm";
 import LevelCreatedWindow from "../Components/Stateless/LevelCreatedWindow";
 import NavigationButton from "../Components/Stateless/NavigationButton";
 import FinishLevelCreation from "../Components/Stateless/FinishLevelCreation";
@@ -103,15 +102,20 @@ function LevelCreate() {
 
                     <div style={arrowStyle}>
                         <div style={arrowLine}></div>
-
                         <div style={rightArrowTriangle}></div>
                     </div>
 
-                    <div style={forthRowStyle}>
-                        Or
+                    <div style={fifthRowStyle}>
+                        To remove an event from your learning activity<br></br>
+                        just drag it outside of the column
                     </div>
 
-                    <div style={fifthRowStyle}>
+                    <div style={arrowStyle2}>
+                        <div style={leftArrowTriangle}></div>
+                        <div style={arrowLine2}></div>
+                    </div>
+
+                    <div style={sixthRowStyle}>
                         Create a brand new event below <br></br>
                         and watch it appear on the right!
                     </div>
@@ -156,11 +160,11 @@ function LevelCreate() {
                     Click here to finish creating
                     your level  ➔
                 </div>
-
-                {finishLevel &&
-                    <FinishLevelCreation addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} fullDates={fullDates} />
-                }
             </div>
+
+            {finishLevel &&
+                <FinishLevelCreation addedEvents={addedEvents} setCreatedLevel={setCreatedLevel} fullDates={fullDates} />
+            }
         </div>
     )
 }
@@ -211,11 +215,12 @@ const newEventsTextStyle = {
 }
 
 const explanationStyle = {
-    gridRow: "2 / 3",
+    gridRow: "1 / 3",
     gridColumn: "2 / 3",
     display: "grid",
     gridTemplateColumns: "500px",
-    gridTemplateRows: " 30px 40px 20px 30px"
+    gridTemplateRows: " 30px 40px 20px 30px 30px",
+    paddingTop: "25px"
 }
 
 const firstRowStyle = {
@@ -238,15 +243,15 @@ const secondRowStyle = {
     gridRow: "2 / 3"
 }
 
-const forthRowStyle = {
+const sixthRowStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "Oswald, sans-serif",
     fontSize: "25px",
     gridColumn: "1/2",
-    gridRow: "4 / 5",
-    paddingTop: "80px"
+    gridRow: "6 / 7",
+    paddingTop: "70px"
 }
 
 const fifthRowStyle = {
@@ -256,7 +261,7 @@ const fifthRowStyle = {
     fontFamily: "Oswald, sans-serif",
     fontSize: "25px",
     gridColumn: "1/2",
-    gridRow: "5 / 6",
+    gridRow: "4 / 5",
     paddingTop: "70px"
 }
 
@@ -287,7 +292,7 @@ const arrowStyle = {
 
 const arrowDownStyle = {
     gridColumn: "1 / 2",
-    gridRow: "6 / 7",
+    gridRow: "7 / 8",
     placeSelf: "center",
     border: "solid grey",
     borderWidth: "0 5px 5px 0",
@@ -318,4 +323,31 @@ const finishLevelTextStyle = {
     fontFamily: "Oswald, sans-serif",
     fontSize: "22px",
     width: "270px"
+}
+
+const leftArrowTriangle = {
+    border: "solid grey",
+    borderWidth: "0 5px 5px 0",
+    display: "inline-block",
+    transform: "rotate(135deg)",
+    WebkitTransform: "rotate(135deg)",
+    height: "30px",
+    width: "30px",
+    marginTop: "10px"
+}
+
+const arrowLine2 = {
+    width: "20%",
+    borderBottom: "3px solid grey",
+    display: "inline-block",
+    marginBottom: "14px"
+}
+
+const arrowStyle2 = {
+    display: "block",
+    paddingTop: "10px",
+    gridColumn: "1/2",
+    gridRow: "5 / 6",
+    textAlign: "right",
+    paddingTop: "37px"
 }
