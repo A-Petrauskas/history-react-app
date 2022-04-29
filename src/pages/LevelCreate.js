@@ -158,7 +158,7 @@ function LevelCreate() {
 
                 <div style={finishLevelTextStyle}>
                     Click here to finish creating
-                    your level  ➔
+                    your learning activity ➔
                 </div>
             </div>
 
@@ -251,7 +251,8 @@ const sixthRowStyle = {
     fontSize: "25px",
     gridColumn: "1/2",
     gridRow: "6 / 7",
-    paddingTop: "70px"
+    paddingTop: "85px",
+    lineHeight: "130%"
 }
 
 const fifthRowStyle = {
@@ -262,7 +263,7 @@ const fifthRowStyle = {
     fontSize: "25px",
     gridColumn: "1/2",
     gridRow: "4 / 5",
-    paddingTop: "70px"
+    paddingTop: "80px"
 }
 
 const rightArrowTriangle = {
@@ -286,8 +287,7 @@ const arrowLine = {
 const arrowStyle = {
     display: "block",
     gridColumn: "1/2",
-    gridRow: "3 / 4",
-    paddingTop: "10px"
+    gridRow: "3 / 4"
 }
 
 const arrowDownStyle = {
@@ -322,7 +322,8 @@ const finishLevelTextStyle = {
     placeSelf: "start",
     fontFamily: "Oswald, sans-serif",
     fontSize: "22px",
-    width: "270px"
+    width: "270px",
+    lineHeight: "120%"
 }
 
 const leftArrowTriangle = {
@@ -345,9 +346,8 @@ const arrowLine2 = {
 
 const arrowStyle2 = {
     display: "block",
-    paddingTop: "10px",
     gridColumn: "1/2",
     gridRow: "5 / 6",
     textAlign: "right",
-    paddingTop: "37px"
+    paddingTop: "49px"
 }
