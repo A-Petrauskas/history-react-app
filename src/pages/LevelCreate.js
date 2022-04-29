@@ -228,7 +228,7 @@ const firstRowStyle = {
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "Oswald, sans-serif",
-    fontSize: "25px",
+    fontSize: "23px",
     gridColumn: "1 / 2",
     gridRow: "1 / 2"
 }
@@ -238,7 +238,7 @@ const secondRowStyle = {
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "Oswald, sans-serif",
-    fontSize: "25px",
+    fontSize: "23px",
     gridColumn: "1/2",
     gridRow: "2 / 3"
 }
@@ -248,7 +248,7 @@ const sixthRowStyle = {
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "Oswald, sans-serif",
-    fontSize: "25px",
+    fontSize: "23px",
     gridColumn: "1/2",
     gridRow: "6 / 7",
     paddingTop: "85px",
@@ -260,7 +260,7 @@ const fifthRowStyle = {
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "Oswald, sans-serif",
-    fontSize: "25px",
+    fontSize: "23px",
     gridColumn: "1/2",
     gridRow: "4 / 5",
     paddingTop: "80px"
