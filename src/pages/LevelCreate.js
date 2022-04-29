@@ -2,10 +2,10 @@ import NewEventForm from "../Components/Stateful/NewEventForm";
 import { DragDropContext } from "react-beautiful-dnd";
 import React, { useEffect, useState } from 'react';
 import SmallEventCardList from "../Components/Stateless/SmallEventCardList";
-import LevelCreatedWindow from "../Components/Stateless/LevelCreatedWindow";
 import NavigationButton from "../Components/Stateless/NavigationButton";
 import FinishLevelCreation from "../Components/Stateless/FinishLevelCreation";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default LevelCreate;
 
@@ -16,6 +16,7 @@ function LevelCreate() {
     const [fullDates, setFullDates] = useState(false);
     const [eventAdded, setEventAdded] = useState(false);
     const [finishLevel, setFinishLevel] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("http://localhost:5000/events")
@@ -87,7 +88,7 @@ function LevelCreate() {
             }
 
             {createdLevel &&
-                <LevelCreatedWindow createdLevel={createdLevel} />
+                navigate(`/level/${createdLevel.id}/view`, { state: createdLevel })
             }
 
             <div style={pageStyle}>

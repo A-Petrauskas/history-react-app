@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import FormImageUpload from "./FormImageUpload";
 
 export default LevelInfoForm;
@@ -113,7 +114,6 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
 
     return (
         <div style={formGrid}>
-
             {levelInfo.imageSrc &&
                 <img src={levelInfo.imageSrc} alt={"Represents the level being created"} style={imageStyle} />}
 
@@ -130,7 +130,8 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                     onChange={handleChange}
                     style={{
                         gridRow: "1 / 2",
-                        gridColumn: "2 / 3"
+                        gridColumn: "2 / 3",
+                        backgroundColor: "#F1E8E4"
                     }} />
 
                 <textarea
@@ -142,7 +143,8 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                     style={{
                         gridRow: "2 / 3",
                         gridColumn: "2 / 3",
-                        resize: "none"
+                        resize: "none",
+                        backgroundColor: "#F1E8E4"
                     }} />
 
                 <input
@@ -153,7 +155,8 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                     onChange={handleChange}
                     style={{
                         gridRow: "3 / 4",
-                        gridColumn: "2 / 3"
+                        gridColumn: "2 / 3",
+                        backgroundColor: "#F1E8E4"
                     }} />
 
                 <input
@@ -164,30 +167,29 @@ function LevelInfoForm({ addedEvents, setCreatedLevel, fullDates }) {
                     onChange={handleChange}
                     style={{
                         gridRow: "4 / 5",
-                        gridColumn: "2 / 3"
+                        gridColumn: "2 / 3",
+                        backgroundColor: "#F1E8E4"
                     }} />
 
                 <div style={{
                     gridRow: "4 / 5",
                     gridColumn: "1 / 2",
-                    alignSelf: "start"
+                    alignSelf: "center",
+                    paddingTop: "130px"
                 }}>
                     <FormImageUpload setInputs={setLevelInfo} />
                 </div>
 
-                <input type="submit" style={{
-                    gridRow: "5 / 6",
-                    gridColumn: "2 / 3",
-                    placeSelf: "center"
-                }} />
+                <Button variant="secondary" type="submit" value={"Add Event"} style={createButtonStyle}
+                >Create Activity!</Button>{' '}
             </form>
         </div>
     );
 }
 
 const imageStyle = {
-    width: "200px",
-    height: "200px",
+    width: "295px",
+    height: "295px",
     objectFit: "cover",
     pointerEvents: "none",
     gridRow: "1 / 2",
@@ -195,13 +197,14 @@ const imageStyle = {
 }
 
 const imagePlaceholder = {
-    width: "200px",
-    height: "200px",
+    width: "295px",
+    height: "295px",
     objectFit: "cover",
     pointerEvents: "none",
-    background: "#BAB2B5",
+    background: "rgba(208, 175, 159, 0.95)",
     borderStyle: "dashed",
-    borderColor: "grey",
+    borderColor: "#F3DACE",
+    borderWidth: "10px",
     gridRow: "1 / 2",
     gridColumn: "1 / 3"
 }
@@ -211,13 +214,30 @@ const formGrid = {
     gridTemplateColumns: "250px 200px",
     gridTemplateRows: " 100px 100px 100px",
     gap: "5px",
+    position: "fixed",
+    left: "35%",
+    top: "30%"
 }
 
 const formInputsGrid = {
     gridRow: "1 / 4",
     gridColumn: "1 / 3",
     display: "grid",
-    gridTemplateColumns: "250px 200px",
+    gridTemplateColumns: "300px 300px",
     gridTemplateRows: " 50px 100px 50px 50px 50px",
-    gap: "5px",
+    gap: "15px",
+    position: "fixed",
+    left: "35%",
+    top: "30%"
+}
+
+const createButtonStyle = {
+    width: "240px",
+    height: "70px",
+    fontSize: "20px",
+    backgroundColor: "#5DA399",
+    borderColor: "#5DA399",
+    position: "fixed",
+    bottom: "15%",
+    left: "45%"
 }
