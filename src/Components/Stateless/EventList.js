@@ -29,7 +29,7 @@ function EventList({ placedEvents, direction, dragDisabled }) {
 
 const GetEventListStyle = (isDraggingOver) => ({
     padding: "50px",
-    backgroundColor: isDraggingOver ? "#CE7264" : "#DDC6BB",
+    backgroundColor: isDraggingOver ? "#E2AAA2" : "#DDC6BB",
     overflowX: "hidden",
     display: "flex",
     maxHeight: "350px",

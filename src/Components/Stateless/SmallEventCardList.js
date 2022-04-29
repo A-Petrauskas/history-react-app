@@ -39,7 +39,7 @@ const GetEventListStyle = (isDraggingOver, droppableIdName) => {
     }
     else {
         return {
-            backgroundColor: isDraggingOver ? "#D38073" : "#DDC6BB",
+            backgroundColor: isDraggingOver ? "#E2AAA2" : "#DDC6BB",
             minHeight: "800px",
             width: "330px",
             transition: "all .5s ease",

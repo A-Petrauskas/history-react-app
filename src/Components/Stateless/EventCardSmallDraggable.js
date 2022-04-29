@@ -86,7 +86,7 @@ const getEventStyle = (draggableStyle, isDragging, draggingOver) => {
             alignItems: "center",
             borderRadius: "8px",
             textAlign: "center",
-            backgroundColor: isDragging ? "#CC8E90" : "#EEE2DC",
+            backgroundColor: isDragging ? "#E2AAA2" : "#EEE2DC",
 
             ...draggableStyle
         }
@@ -102,7 +102,7 @@ const getEventStyle = (draggableStyle, isDragging, draggingOver) => {
             alignItems: "center",
             borderRadius: "8px",
             textAlign: "center",
-            backgroundColor: isDragging ? "#B1D3CE" : "#EEE2DC", transition: "all .5s ease",
+            backgroundColor: isDragging ? "#EEE2DC" : "#EEE2DC", transition: "all .8s ease",
 
             ...draggableStyle
         }
