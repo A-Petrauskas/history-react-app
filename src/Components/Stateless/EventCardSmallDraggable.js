@@ -8,14 +8,15 @@ function EventCardSmallDraggable({ description, imageSrc, date, id, index }) {
         return description.split(" ").length - 1;
     }
 
+
     if (description && GetWordApproxCount(description) > 3) {
         return (
             <div style={cardSeparation} key={id}>
                 <Draggable draggableId={id} index={index}>
-                    {(provided) => (
+                    {(provided, snapshot) => (
 
                         <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
-                            style={getEventStyle(provided.draggableProps.style)}>
+                            style={getEventStyle(provided.draggableProps.style, snapshot.isDragging, snapshot.draggingOver)}>
                             <Card.Img variant="left" src={imageSrc} style={imageStyle} />
                             <Card.Body>
                                 <Card.Title style={{ fontSize: "15px" }}>{description}</Card.Title>
@@ -34,10 +35,10 @@ function EventCardSmallDraggable({ description, imageSrc, date, id, index }) {
     return (
         <div style={cardSeparation} key={id}>
             <Draggable draggableId={id} index={index}>
-                {(provided) => (
+                {(provided, snapshot) => (
 
                     <Card {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
-                        style={getEventStyle(provided.draggableProps.style)}>
+                        style={getEventStyle(provided.draggableProps.style, snapshot.isDragging, snapshot.draggingOver)}>
                         <Card.Img variant="left" src={imageSrc} style={imageStyle} />
                         <Card.Body>
                             <Card.Title>{description}</Card.Title>
@@ -73,17 +74,37 @@ const cardSeparation = {
     alignItems: "center",
 }
 
-const getEventStyle = (draggableStyle) => ({
-    flexDirection: "row",
-    background: "#EEE2DC",
-    fontWeight: "bold",
-    minWidth: "300px",
-    maxWidth: "300px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "8px",
-    textAlign: "center",
+const getEventStyle = (draggableStyle, isDragging, draggingOver) => {
+    if (!draggingOver || draggingOver === "allEvents") {
+        return {
+            flexDirection: "row",
+            fontWeight: "bold",
+            minWidth: "300px",
+            maxWidth: "300px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "8px",
+            textAlign: "center",
+            backgroundColor: isDragging ? "#CC8E90" : "#EEE2DC",
 
-    ...draggableStyle
-});
+            ...draggableStyle
+        }
+    }
+    else {
+        return {
+            flexDirection: "row",
+            fontWeight: "bold",
+            minWidth: "300px",
+            maxWidth: "300px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "8px",
+            textAlign: "center",
+            backgroundColor: isDragging ? "#B1D3CE" : "#EEE2DC", transition: "all .5s ease",
+
+            ...draggableStyle
+        }
+    }
+};

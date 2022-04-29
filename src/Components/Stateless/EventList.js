@@ -9,9 +9,9 @@ function EventList({ placedEvents, direction, dragDisabled }) {
     return (
         <div style={placedEventsStyle}>
             <Droppable droppableId="placedEvents" direction={direction}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}
-                        style={wrapper}>
+                        style={GetEventListStyle(snapshot.isDraggingOver)}>
                         {placedEvents.map((event, i) => (
                             <EventCard {...event} index={i} id={'Card-' + i} dragDisabled={dragDisabled} key={'Card-' + i} />
                         ))}
@@ -27,13 +27,14 @@ function EventList({ placedEvents, direction, dragDisabled }) {
     );
 }
 
-const wrapper = {
+const GetEventListStyle = (isDraggingOver) => ({
     padding: "50px",
-    backgroundColor: "#DDC6BB",
+    backgroundColor: isDraggingOver ? "#CE7264" : "#DDC6BB",
     overflowX: "hidden",
     display: "flex",
-    maxHeight: "350px"
-}
+    maxHeight: "350px",
+    transition: "all .7s ease",
+});
 
 const placedEventsStyle = {
     marginTop: "50px",

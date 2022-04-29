@@ -8,9 +8,9 @@ function SmallEventCardList({ addedEvents, eventIdName, droppableIdName, isDropD
     return (
         <div style={addedEventsStyle}>
             <Droppable droppableId={droppableIdName} direction={"vertical"} isDropDisabled={isDropDisabled}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}
-                        style={wrapper}>
+                        style={GetEventListStyle(snapshot.isDraggingOver, droppableIdName)}>
                         {addedEvents.map((event, i) => (
                             <EventCardSmallDraggable {...event} index={i} id={eventIdName + i} key={eventIdName + i} />
                         ))}
@@ -29,8 +29,20 @@ const addedEventsStyle = {
     alignItems: "center"
 }
 
-const wrapper = {
-    backgroundColor: "#DDC6BB",
-    minHeight: "800px",
-    width: "330px"
-}
+const GetEventListStyle = (isDraggingOver, droppableIdName) => {
+    if (droppableIdName === "allEvents") {
+        return {
+            backgroundColor: "#DDC6BB",
+            minHeight: "800px",
+            width: "330px"
+        }
+    }
+    else {
+        return {
+            backgroundColor: isDraggingOver ? "#D38073" : "#DDC6BB",
+            minHeight: "800px",
+            width: "330px",
+            transition: "all .5s ease",
+        }
+    }
+};
