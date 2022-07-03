@@ -18,8 +18,8 @@ When creating levels for well-known historic time periods as well as the GCSE Hi
 
 ## Used
 - The API used to run the game is written in C# and can be found [here](https://github.com/A-Petrauskas/HistoryAPI).
-- React-Bootstrap for cards and other premade components.
-- [react-beautiful-dnd] (https://github.com/atlassian/react-beautiful-dnd) for drag-and-drop functionality.
+- [React-Bootstrap](https://react-bootstrap.github.io/) for cards and other premade components.
+- [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) for drag-and-drop functionality.
 
 ## Application screenshots
 ### Game Over Screen
