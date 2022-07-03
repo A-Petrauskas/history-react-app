@@ -1,10 +1,15 @@
 # History Timeline Learning Application
 
-### Gameplay Screen
-<img src="https://user-images.githubusercontent.com/72355656/177048483-01e8b50a-bf6a-4ef6-8073-1dd6ba02ba76.png" height="400">
 
-### Gameplay Tutorial Screen
+<p align="center">
+<img src="https://user-images.githubusercontent.com/72355656/177048483-01e8b50a-bf6a-4ef6-8073-1dd6ba02ba76.png" height="400">
+<h4 align="center"> Gameplay Screen </h1>
+</p>
+
+<p align="center">
 <img src="https://user-images.githubusercontent.com/72355656/177048473-c6af3581-a1b3-4725-9a0d-79f1df3b9881.png" height="400">
+</p>
+<h4 align="center"> Gameplay Tutorial Screen </h1>
 
 
 ## Introduction
